@@ -76,14 +76,14 @@ class User extends Authenticatable
         }
         return false;
     }
-    public function isEditor(): bool
+    public function isMember(): bool
     {
         if ($this->role_id == 2) {
             return true;
         }
         return false;
     }
-    public function isMember(): bool
+    public function isCustomer(): bool
     {
         if ($this->role_id == 3) {
             return true;

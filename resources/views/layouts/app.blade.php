@@ -34,20 +34,23 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        @if (Auth::user()->isAdmin())
+                        @auth
+                            @if (Auth::user()->isAdmin())
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('home') }}">{{ __('Orders') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('home') }}">{{ __('Bookkeeping') }}</a>
+                                </li>
+                            @endif
+                        @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">{{ __('Orders') }}</a>
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">{{ __('Bookkeeping') }}</a>
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('About Us') }}</a>
                             </li>
-                        @endif
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('About Us') }}</a>
-                        </li>
+                        @endauth
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}">{{ __('Testimonies') }}</a>
                         </li>
