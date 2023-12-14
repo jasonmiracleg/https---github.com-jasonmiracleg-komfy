@@ -31,5 +31,11 @@ class DatabaseSeeder extends Seeder
             'is_login' => '0',
             'is_active' => '1'
         ]);
+        $this->call(ProductSeeder::class);
+        $this->call(ProductPictureSeeder::class);
+        $this->call(CategorySeeder::class);
+        $this->call(VariantSeeder::class);
+        $this->call(BillSeeder::class);
+        $this->call(OrderSeeder::class);
     }
 }
