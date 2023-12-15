@@ -22,4 +22,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('testimony', TestimonyController::class);
+Route::put('/testimony/{testimony}/accept', [TestimonyController::class, 'accept'])->name('testimony.accept');
+Route::put('/testimony/{testimony}/reject', [TestimonyController::class, 'reject'])->name('testimony.reject');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

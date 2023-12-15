@@ -12,148 +12,138 @@
             </div>
         </div>
         <div class="p-lg-3 p-4">
-            <div class="border-top border-bottom">
-                <h1 class="mt-3 fw-bolder text-center mb-3">Testimoni Anda</h1>
-                @auth
-                    @if (Auth::user()->isAdmin())
+            @auth
+                @if (Auth::user()->isMember())
+                    <div class="border-top border-bottom">
+                        <h1 class="mt-3 fw-bolder text-center mb-3">Testimoni Anda</h1>
                         <form action="{{ route('testimony.create') }}" method="GET">
                             <button class="btn btn-warning mb-3" href="{{ route('testimony.create') }}">
                                 Tambah Testimoni
                             </button>
                         </form>
                         <div class="row d-flex">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="card mb-4">
-                                    <!-- Card Body -->
-                                    <div class="card-body rounded shadow" style="background-color: #ffa323">
-                                        <div class="d-lg-flex">
-                                            <div
-                                                class="position-relative d-flex justify-content-center align-items-center align-items-lg-start">
-                                                <img src="{{ asset('image/Testimony.JPG') }}" alt=""
-                                                    class="rounded-circle
+                            @foreach ($mytestimony as $testimony)
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card mb-4">
+                                        <!-- Card Body -->
+                                        <div class="card-body rounded shadow" style="background-color: #ffa323">
+                                            <div class="d-lg-flex">
+                                                <div
+                                                    class="position-relative d-flex justify-content-center align-items-center align-items-lg-start">
+                                                    <img src="{{ asset('image/Testimony.JPG') }}" alt=""
+                                                        class="rounded-circle
                                          mb-3 mb-lg-0 shadow"
-                                                    width="100" height="100">
-                                            </div>
-                                            <div class="ms-lg-4 text-lg-start text-center text-white">
-                                                <h4 class="mb-0 fw-bold">Jenny Wilson</h4>
-                                                <p class="mb-0 fs-6 fw-bolder">Customer</p>
-                                                <p>I start my development and digital career studying digital
-                                                    design. After taking a couple of programming classes I realize
-                                                    that code is what I wanted to be doing, so I start learning by
-                                                    myself. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum
-                                                    inventore
-                                                    maiores ab suscipit quos accusamus quidem eaque alias sed, minima molestiae
-                                                    voluptatum
-                                                    magnam soluta distinctio dolore, qui est porro ad.
-                                                </p>
-                                                <form action="{{ route('testimony.create') }}" method="GET">
-                                                    <button class="btn btn-primary mb-3" href="{{ route('testimony.create') }}">
-                                                        Edit Testimoni
-                                                    </button>
-                                                    <button class="btn btn-danger mb-3" href="{{ route('testimony.create') }}">
-                                                        Hapus Testimoni
-                                                    </button>
-                                                </form>
+                                                        width="100" height="100">
+                                                </div>
+                                                <div class="ms-lg-4 text-lg-start text-center text-white">
+                                                    <h4 class="mb-0 fw-bold">{{ $testimony->testify->name }}</h4>
+                                                    <p class="mb-0 fs-6 fw-bolder">{{ $testimony->testify->role->role_name }}
+                                                    </p>
+                                                    <p>{{ $testimony->description }}
+                                                    </p>
+                                                    <form action="{{ route('testimony.edit', $testimony) }}" method="GET">
+                                                        <button class="btn btn-primary mb-3"
+                                                            href="{{ route('testimony.edit', $testimony) }}">
+                                                            Edit Testimoni
+                                                        </button>
+                                                    </form>
+                                                    <form action="{{ route('testimony.destroy', $testimony) }}" method="POST">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button class="btn btn-danger mb-3"
+                                                            href="{{ route('testimony.destroy', $testimony) }}">
+                                                            Hapus Testimoni
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-                    @endif
-                @endauth
-            </div>
+                    </div>
+                @endif
+                @if (Auth::user()->isAdmin())
+                    <div class="border-top border-bottom">
+                        <h1 class="mt-3 fw-bolder text-center mb-3">Permohonan Testimoni</h1>
+                        <div class="row d-flex">
+                            @foreach ($testimonyRequest as $request)
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card mb-4">
+                                        <!-- Card Body -->
+                                        <div class="card-body rounded shadow" style="background-color: #ffa323">
+                                            <div class="d-lg-flex">
+                                                <div
+                                                    class="position-relative d-flex justify-content-center align-items-center align-items-lg-start">
+                                                    <img src="{{ asset('image/Testimony.JPG') }}" alt=""
+                                                        class="rounded-circle
+                                         mb-3 mb-lg-0 shadow"
+                                                        width="100" height="100">
+                                                </div>
+                                                <div class="ms-lg-4 text-lg-start text-center text-white">
+                                                    <h4 class="mb-0 fw-bold">{{ $request->testify->name }}</h4>
+                                                    <p class="mb-0 fs-6 fw-bolder">{{ $request->testify->role->role_name }}
+                                                    </p>
+                                                    <p>{{ $request->description }}
+                                                    </p>
+                                                    <form action="{{ route('testimony.accept', $request) }}" method="POST">
+                                                        @method('put')
+                                                        @csrf
+                                                        <button class="btn btn-success mb-3"
+                                                            href="{{ route('testimony.accept', $request) }}">
+                                                            Terima Testimoni
+                                                        </button>
+                                                    </form>
+                                                    <form action="{{ route('testimony.reject', $request) }}" method="POST">
+                                                        @method('put')
+                                                        @csrf
+                                                        <button class="btn btn-danger mb-3"
+                                                            href="{{ route('testimony.reject', $request) }}">
+                                                            Tolak Testimoni
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+            @endauth
         </div>
         <div class="row p-lg-3 p-4 d-flex">
             @auth
-                @if (Auth::user()->isAdmin())
+                @if (Auth::user()->isMember())
                     <h1 class="mt-3 fw-bolder text-center mb-3">Testimoni Pelanggan</h1>
                 @endif
             @endauth
-            <div class="col-lg-4 col-md-6">
-                <div class="card mb-4">
-                    <!-- Card Body -->
-                    <div class="card-body rounded shadow" style="background-color: #ffa323">
-                        <div class="d-lg-flex">
-                            <div
-                                class="position-relative d-flex justify-content-center align-items-center align-items-lg-start">
-                                <img src="{{ asset('image/Testimony.JPG') }}" alt=""
-                                    class="rounded-circle
-                             mb-3 mb-lg-0 shadow" width="100"
-                                    height="100">
-                            </div>
-                            <div class="ms-lg-4 text-lg-start text-center text-white">
-                                <h4 class="mb-0 fw-bold">Jenny Wilson</h4>
-                                <p class="mb-0 fs-6 fw-bold">Customer</p>
-                                <p>I start my development and digital career studying digital
-                                    design. After taking a couple of programming classes I realize
-                                    that code is what I wanted to be doing, so I start learning by
-                                    myself. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum inventore
-                                    maiores ab suscipit quos accusamus quidem eaque alias sed, minima molestiae
-                                    voluptatum
-                                    magnam soluta distinctio dolore, qui est porro ad.
-                                </p>
+            @foreach ($testimonies as $testimony)
+                <div class="col-lg-4 col-md-6">
+                    <div class="card mb-4">
+                        <!-- Card Body -->
+                        <div class="card-body rounded shadow" style="background-color: #ffa323">
+                            <div class="d-lg-flex">
+                                <div
+                                    class="position-relative d-flex justify-content-center align-items-center align-items-lg-start">
+                                    <img src="{{ asset('image/Testimony.JPG') }}" alt=""
+                                        class="rounded-circle
+                             mb-3 mb-lg-0 shadow"
+                                        width="100" height="100">
+                                </div>
+                                <div class="ms-lg-4 text-lg-start text-center text-white">
+                                    <h4 class="mb-0 fw-bold">{{ $testimony->testify->name }}</h4>
+                                    <p class="mb-0 fs-6 fw-bold">{{ $testimony->testify->role->role_name }}</p>
+                                    <p>{{ $testimony->description }}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="card mb-4">
-                    <!-- Card Body -->
-                    <div class="card-body rounded shadow" style="background-color: #ffa323">
-                        <div class="d-lg-flex">
-                            <div
-                                class="position-relative d-flex justify-content-center align-items-center align-items-lg-start">
-                                <img src="{{ asset('image/Testimony.JPG') }}" alt=""
-                                    class="rounded-circle
-                             mb-3 mb-lg-0 shadow" width="100"
-                                    height="100">
-                            </div>
-                            <div class="ms-lg-4 text-lg-start text-center text-white">
-                                <h4 class="mb-0 fw-bold">Jenny Wilson</h4>
-                                <p class="mb-0 fs-6 fw-bold">Customer</p>
-                                <p>I start my development and digital career studying digital
-                                    design. After taking a couple of programming classes I realize
-                                    that code is what I wanted to be doing, so I start learning by
-                                    myself. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum inventore
-                                    maiores ab suscipit quos accusamus quidem eaque alias sed, minima molestiae
-                                    voluptatum
-                                    magnam soluta distinctio dolore, qui est porro ad.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="card mb-4">
-                    <!-- Card Body -->
-                    <div class="card-body rounded shadow" style="background-color: #ffa323">
-                        <div class="d-lg-flex">
-                            <div
-                                class="position-relative d-flex justify-content-center align-items-center align-items-lg-start">
-                                <img src="{{ asset('image/Testimony.JPG') }}" alt=""
-                                    class="rounded-circle
-                             mb-3 mb-lg-0 shadow" width="100"
-                                    height="100">
-                            </div>
-                            <div class="ms-lg-4 text-lg-start text-center text-white">
-                                <h4 class="mb-0 fw-bold">Jenny Wilson</h4>
-                                <p class="mb-0 fs-6 fw-bold">Customer</p>
-                                <p>I start my development and digital career studying digital
-                                    design. After taking a couple of programming classes I realize
-                                    that code is what I wanted to be doing, so I start learning by
-                                    myself. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum inventore
-                                    maiores ab suscipit quos accusamus quidem eaque alias sed, minima molestiae
-                                    voluptatum
-                                    magnam soluta distinctio dolore, qui est porro ad.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection
