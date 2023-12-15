@@ -52,7 +52,7 @@
                             </li>
                         @endauth
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Testimonies') }}</a>
+                            <a class="nav-link" href="{{ route('testimony.index') }}">{{ __('Testimonies') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}">{{ __('Products') }}</a>
