@@ -15,27 +15,33 @@ class ProductPictureSeeder extends Seeder
     {
         DB::table('product_pictures')->insert([
             'picture' => 'grape_1.JPG',
-            'product_id' => 1
+            'product_id' => 1,
+            'variant_id' => 1
         ]);
         DB::table('product_pictures')->insert([
             'picture' => 'grape_2.JPG',
-            'product_id' => 1
+            'product_id' => 1,
+            'variant_id' => 1
         ]);
         DB::table('product_pictures')->insert([
             'picture' => 'grape_3.JPG',
-            'product_id' => 1
+            'product_id' => 1,
+            'variant_id' => 1
         ]);
         DB::table('product_pictures')->insert([
             'picture' => 'lychee_1.JPG',
-            'product_id' => 2
+            'product_id' => 1,
+            'variant_id' => 2
         ]);
         DB::table('product_pictures')->insert([
             'picture' => 'lychee_2.JPG',
-            'product_id' => 2
+            'product_id' => 1,
+            'variant_id' => 2
         ]);
         DB::table('product_pictures')->insert([
             'picture' => 'lychee_3.JPG',
-            'product_id' => 2
+            'product_id' => 1,
+            'variant_id' => 2
         ]);
     }
 }

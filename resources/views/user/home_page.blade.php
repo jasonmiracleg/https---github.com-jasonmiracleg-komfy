@@ -60,6 +60,9 @@
         </section>
 
         <div class="py-8 bg-light-gradient-top ">
+            <a href="/cart">
+                <button class="btn btn-primary" type="button">cart</button>
+            </a>
             <div class="container">
                 <div class="row mb-8 justify-content-center">
                     <!-- caption -->
@@ -71,51 +74,52 @@
                 <!-- row -->
                 <div class="row">
 
-                    @foreach ($products as $product)
-
+                    @foreach ($variants as $variant)
                         <div class="col-xl-3 col-lg-4 col-md-6 col-12">
                             <!-- card -->
                             <div class="card mb-4 card-hover">
 
                                 @foreach ($product_picture as $product_pict)
-                                   
-                                    @if ($product_pict->product_id == $product->id)
-
+                                    @if ($product_pict->variant_id == $variant->id)
                                         <!-- img -->
                                         <div class="card-img-top">
                                             <img src="/assets/image/{{ $product_pict->picture }}" alt=""
                                                 class="rounded-top-md img-fluid" style="height56vh; width:100%">
                                         </div>
-                                        @break
+                                    @break
+                                @endif
+                            @endforeach
 
+                            <!-- card body -->
+                            <div class="card-body">
+                                <h3 class="mb-0 fw-semibold text-center"> <a href="#"
+                                        class="text-inherit">{{ $variant->variant_name }}</a></h3>
+
+                                @foreach ($products as $product)
+                                    @if ($variant->product_id == $product->id)
+                                        <h5 class="mb-0 fw-semibold text-center">
+                                            {{ $product->price }} </h5>
+                                        <!-- Button Block -->
+                                        <div class="d-flex justify-content-center">
+                                            <a href="/show/{{ $variant->id }}/{{ $variant->product_id }}">
+                                                <button class="btn btn-primary" type="button">View
+                                                    Product</button>
+                                            </a>
+                                        </div>
                                     @endif
-
                                 @endforeach
 
-                                <!-- card body -->
-                                <div class="card-body">
-                                    <h3 class="mb-0 fw-semibold text-center"> <a href="#"
-                                            class="text-inherit">{{ $product->product_name }}</a></h3>
-
-                                    <h5 class="mb-0 fw-semibold text-center"> {{ $product->price }} </h5>
-                                    <!-- Button Block -->
-                                    <div class="d-flex justify-content-center">
-                                        <a href="/show/{{ $product->id }}">
-                                            <button class="btn btn-primary" type="button">View Product</button>
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
+                    </div>
+                @endforeach
 
-                    @endforeach
-
-                </div>
             </div>
         </div>
-
-        @include('layouts/footer')
     </div>
+
+    @include('layouts/footer')
+</div>
 
 </body>
 

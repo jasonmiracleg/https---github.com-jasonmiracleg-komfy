@@ -14,14 +14,9 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         DB::table('products')->insert([
-            'product_name' => 'KOMFY 1',
+            'product_name' => 'KOMB',
             'description' => 'rasanya enak sekali',
             'price' => 50000
-        ]);
-        DB::table('products')->insert([
-            'product_name' => 'KOMFY 2',
-            'description' => 'rasanya mantap sekali',
-            'price' => 40000
         ]);
     }
 }

@@ -9,9 +9,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class ProductPicture extends Model
 {
     use HasFactory;
-    protected $fillable = ['picture', 'product_id'];
+    protected $fillable = ['picture', 'product_id', 'variant_id'];
     public function pictures(): BelongsTo
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
+    public function variant_s(): BelongsTo
+    {
+        return $this->belongsTo(Variant::class, 'variant_id', 'id');
     }
 }

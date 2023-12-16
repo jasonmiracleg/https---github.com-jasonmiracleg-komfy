@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\VariantController;
+use App\Livewire\Show;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Livewire\Livewire;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProductController::class, 'index']);
 
-Route::get('/show/{index}', [ProductController::class, 'show']);
+Route::get('/show/{variant_id}/{product_id}', [ProductController::class, 'show']);
+
+Route::post('/cart', [ProductController::class, 'cart']);
 
 Auth::routes();
 
