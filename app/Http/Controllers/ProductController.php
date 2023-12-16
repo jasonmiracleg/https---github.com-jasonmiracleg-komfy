@@ -51,12 +51,13 @@ class ProductController extends Controller
 
     public function cart(Request $request)
     {
+        // dd($request->product_price, $request->quantity);
         Order::create([
             'product_id' => $request->product_id,
             // 'variant_id' => $request->variant_id,
             'bill_id' => 1,
             'quantity' => $request->quantity,
-            'order_price' => ($request->product_price * $request->quantity)
+            'order_price' => ($request->price * $request->quantity)
         ]);
 
         return $this->index();

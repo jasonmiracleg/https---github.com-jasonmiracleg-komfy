@@ -97,7 +97,7 @@
                                 </div>
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 <input type="hidden" name="variant_id" value="{{ $variant->id }}">
-                                <input type="hidden" name="product_price" value="{{ $product->product_price }}">
+                                <input type="hidden" name="price" value="{{ $product->price }}">
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                                 <button class="btn btn-light border border-secondary py-2 icon-hover px-3"
                                     type="submit">
