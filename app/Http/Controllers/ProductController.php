@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bill;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
@@ -12,13 +13,14 @@ use Illuminate\Support\Collection;
 
 class ProductController extends Controller
 {
+
     public function index()
     {
         $products = Product::all();
         $variants = Variant::all();
         $product_picture = ProductPicture::all();
 
-        return view('user.home_page', [
+        return view('user.home', [
             'products' => $products,
             'product_picture' => $product_picture,
             'variants' => $variants
@@ -51,21 +53,81 @@ class ProductController extends Controller
 
     public function cart(Request $request)
     {
-        // dd($request->product_price, $request->quantity);
+        $products = Product::all();
+        $variants = Variant::all();
+        $product_picture = ProductPicture::all();
+
         Order::create([
+            'user_id' => $request->user_id,
             'product_id' => $request->product_id,
-            // 'variant_id' => $request->variant_id,
-            'bill_id' => 1,
+            'variant_id' => $request->variant_id,
             'quantity' => $request->quantity,
-            'order_price' => ($request->price * $request->quantity)
+            'order_price' => $request->price * $request->quantity
         ]);
 
-        return $this->index();
+        return view('user.home', [
+            'products' => $products,
+            'product_picture' => $product_picture,
+            'variants' => $variants
+        ]);
     }
 
-    // public function findCategory(Request $request)
-    // {
-    //     $category_data = Category::select('category_name', 'id')->where('id', $request->category_id)->get();
-    //     return response()->json($category_data);
-    // }
+    public function checkout(Request $request)
+    {
+        $user_id = $request->user_id;
+        
+        $bills = Bill::create([
+            'is_paid' => '0',
+            'is_cash' => '0'
+        ]);
+
+        $orders = Order::where('user_id', $user_id);
+
+        $orders->update(
+            [
+                'bill_id' => $bills->id
+            ]
+        );
+
+        $products = Product::all();
+        $variants = Variant::all();
+        $product_picture = ProductPicture::all();
+
+        return view('user.home', [
+            'products' => $products,
+            'product_picture' => $product_picture,
+            'variants' => $variants
+        ]);
+    }
+
+    public function show_cart(Request $request)
+    {
+        $orders = Order::all();
+        $variants = Variant::all();
+        $products = Product::all();
+
+        return view(
+            'user.cart',
+            [
+                'orders' => $orders,
+                'variants' => $variants,
+                'products' => $products,
+            ]
+        );
+    }
+
+    public function delete_order($order_id)
+    {
+        Order::find($order_id)->delete();
+
+        $products = Product::all();
+        $variants = Variant::all();
+        $product_picture = ProductPicture::all();
+
+        return view('user.home', [
+            'products' => $products,
+            'product_picture' => $product_picture,
+            'variants' => $variants
+        ]);
+    }
 }

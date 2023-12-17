@@ -31,6 +31,15 @@ class DatabaseSeeder extends Seeder
             'is_login' => '0',
             'is_active' => '1'
         ]);
+        DB::table('users')->insert([
+            'name' => 'Yobel',
+            'email' => "yobel@gmail.com",
+            'password' => bcrypt('12345678'),
+            'profile_picture' => "asas",
+            'role_id' => 2,
+            'is_login' => '0',
+            'is_active' => '1'
+        ]);
         $this->call(ProductSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(VariantSeeder::class);

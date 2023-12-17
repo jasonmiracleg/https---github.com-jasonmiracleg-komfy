@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-
-    <title>Document</title>
-</head>
-
-<body>
-
+@section('content')
     <!-- content -->
     <section class="py-5">
         <div class="container">
@@ -78,8 +62,7 @@
                                     <div class="col-md-4 col-6 mb-3">
                                         <div class="input-group bs-number-incrementer">
                                             <span class="input-group-btn">
-                                                <button type="button" class="btn btn-default"
-                                                    data-operation="decrement">
+                                                <button type="button" class="btn btn-default" data-operation="decrement">
                                                     <span class="glyphicon glyphicon-minus"></span>
                                                 </button>
                                             </span>
@@ -87,8 +70,7 @@
                                             <span class="bs-number-incremented-target"></span>
 
                                             <span class="input-group-btn">
-                                                <button type="button" class="btn btn-default"
-                                                    data-operation="increment">
+                                                <button type="button" class="btn btn-default" data-operation="increment">
                                                     <span class="glyphicon glyphicon-plus"></span>
                                                 </button>
                                             </span>
@@ -98,9 +80,9 @@
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 <input type="hidden" name="variant_id" value="{{ $variant->id }}">
                                 <input type="hidden" name="price" value="{{ $product->price }}">
-                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                                <button class="btn btn-light border border-secondary py-2 icon-hover px-3"
-                                    type="submit">
+                                <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id() }}">
+
+                                <button class="btn btn-light border border-secondary py-2 icon-hover px-3" type="submit">
                                     Add to Cart
                                 </button>
 
@@ -118,7 +100,4 @@
         </div>
     </section>
     <!-- content -->
-
-</body>
-
-</html>
+@endsection

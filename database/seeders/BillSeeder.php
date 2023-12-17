@@ -16,7 +16,6 @@ class BillSeeder extends Seeder
         DB::table('bills')->insert([
             'is_cash' => '1',
             'is_paid' => '0',
-            'user_id' => 1
         ]);
     }
 }

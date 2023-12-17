@@ -13,6 +13,7 @@ class Bill extends Model
     use HasFactory;
 
     protected $fillable = ['is_cash', 'is_paid', 'user_id'];
+    
     public function billing(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
