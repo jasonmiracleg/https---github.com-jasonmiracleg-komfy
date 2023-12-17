@@ -16,8 +16,6 @@ return new class extends Migration
             $table->timestamps();
             $table->enum('is_cash', ['0', '1'])->default('0');
             $table->enum('is_paid', ['0', '1'])->default('0');
-            $table->unsignedBigInteger('user_id')->index();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

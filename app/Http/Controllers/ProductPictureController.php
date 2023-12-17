@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class ProductPictureController extends Controller
 {
-    //
+    public function index()
+    {
+
+    }
 }
