@@ -58,7 +58,7 @@
                             <a class="nav-link" href="{{ route('home') }}">{{ __('Products') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Partnerships') }}</a>
+                            <a class="nav-link" href="{{ route('partnership.index') }}">{{ __('Partnerships') }}</a>
                         </li>
                     </ul>
 
@@ -102,7 +102,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>

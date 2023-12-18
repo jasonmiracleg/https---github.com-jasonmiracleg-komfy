@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\BillController;
+use App\Http\Controllers\Admin\BillController;
+use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\VariantController;
 use App\Livewire\Show;
@@ -39,6 +40,7 @@ Route::get('/verify_is_cash/{bill_id}', [BillController::class, 'verify_cash']);
 Auth::routes();
 
 Route::resource('testimony', TestimonyController::class);
+Route::resource('partnership', PartnershipController::class);
 Route::put('/testimony/{testimony}/accept', [TestimonyController::class, 'accept'])->name('testimony.accept');
 Route::put('/testimony/{testimony}/reject', [TestimonyController::class, 'reject'])->name('testimony.reject');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

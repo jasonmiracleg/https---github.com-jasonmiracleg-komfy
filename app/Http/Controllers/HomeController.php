@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Variant;
 use Illuminate\Http\Request;
+use App\Models\ProductPicture;
 
 class HomeController extends Controller
 {
@@ -11,10 +14,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -23,6 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.home');
+        $products = Product::all();
+        $variants = Variant::all();
+        $product_picture = ProductPicture::all();
+
+        return view('user.home', [
+            'products' => $products,
+            'product_picture' => $product_picture,
+            'variants' => $variants
+        ]);
     }
 }
