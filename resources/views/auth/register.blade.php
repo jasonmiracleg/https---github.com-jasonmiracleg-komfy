@@ -77,8 +77,14 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Profile Picture') }}</label>
 
                                 <div class="col-md-6">
-                                    <input type="file" name="profile_picture" id="profile_picture" class="form-control"
+                                    <input type="file" name="profile_picture" id="profile_picture"
+                                        class="form-control @error('profile_picture') is-invalid @enderror"
                                         accept="image/jpg, image/png, image.jpeg" onchange="previewImage()" required>
+                                    @error('profile_picture')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     <img class="img-preview img-fluid mt-3 col-sm-5">
                                 </div>
                             </div>
