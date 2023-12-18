@@ -53,6 +53,18 @@
                 <button class="btn btn-primary" type="submit">cart</button>
             </form>
 
+            <a href="/admin_category">
+                <button class="btn btn-primary" type="button">index category</button>
+            </a>
+
+            <a href="/admin_variant">
+                <button class="btn btn-primary" type="button">index variant</button>
+            </a>
+
+            <a href="/admin_product">
+                <button class="btn btn-primary" type="button">index product</button>
+            </a>
+
             <div class="container">
                 <div class="row mb-8 justify-content-center">
                     <!-- caption -->

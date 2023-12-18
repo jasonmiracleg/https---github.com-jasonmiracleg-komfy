@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductPicture;
+use App\Models\User;
 use App\Models\Variant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -75,7 +76,7 @@ class ProductController extends Controller
     public function checkout(Request $request)
     {
         $user_id = $request->user_id;
-        
+
         $bills = Bill::create([
             'is_paid' => '0',
             'is_cash' => '0'
@@ -102,13 +103,17 @@ class ProductController extends Controller
 
     public function show_cart(Request $request)
     {
-        $orders = Order::all();
         $variants = Variant::all();
         $products = Product::all();
+        $user_id = $request->user_id;
+        $orders = Order::all();
+        // $orders = Order::where('user_id', $request->user_id);
+        // dd($orders->count());
 
         return view(
             'user.cart',
             [
+                'user_id' => $user_id,
                 'orders' => $orders,
                 'variants' => $variants,
                 'products' => $products,
@@ -129,5 +134,23 @@ class ProductController extends Controller
             'product_picture' => $product_picture,
             'variants' => $variants
         ]);
+    }
+
+    public function data()
+    {
+        $products = Product::all();
+        $variants = Variant::all();
+        $users = User::all();
+        $bills = Bill::all();
+        $orders = Order::all();
+
+        return view('admin.order', [
+            'products' => $products,
+            'variants' => $variants,
+            'users' => $users,
+            'bills' => $bills,
+            'orders' => $orders
+        ]);
+
     }
 }

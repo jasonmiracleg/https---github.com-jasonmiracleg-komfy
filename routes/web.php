@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\BillController;
+use App\Http\Controllers\Admin\BillController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\VariantController;
+use App\Http\Controllers\Admin\VariantController;
 use App\Livewire\Show;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,20 @@ use Livewire\Livewire;
 Route::get('/home', [ProductController::class, 'index']);
 
 Route::get('/show/{variant_id}/{product_id}', [ProductController::class, 'show']);
+
+Route::get('/admin_order', [ProductController::class, 'data']);
+
+Route::get('/admin_category', [CategoryController::class, 'index']);
+
+Route::get('/delete_category/{category_id}', [CategoryController::class, 'delete']);
+
+Route::post('/create_category', [CategoryController::class, 'create']);
+
+Route::get('/admin_variant', [VariantController::class, 'index']);
+
+Route::get('/delete_variant/{variant_id}', [VariantController::class, 'delete']);
+
+Route::post('/create_variant', [VariantController::class, 'create']);
 
 Route::post('/cart', [ProductController::class, 'cart']);
 
