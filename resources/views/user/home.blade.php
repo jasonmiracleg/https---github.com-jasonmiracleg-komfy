@@ -49,7 +49,7 @@
 
             <form method="POST" action="/check_cart">
                 @csrf
-                <input type="hidden" name="user_id" value="{{ Auth::id() }}" >
+                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                 <button class="btn btn-primary" type="submit">cart</button>
             </form>
 
@@ -101,15 +101,15 @@
                                 <h3 class="mb-0 fw-semibold text-center"> <a href="#"
                                         class="text-inherit">{{ $variant->variant_name }}</a></h3>
 
-                                        <h5 class="mb-0 fw-semibold text-center">
-                                            {{ $variant->price }} </h5>
-                                        <!-- Button Block -->
-                                        <div class="d-flex justify-content-center">
-                                            <a href="/show/{{ $variant->id }}/{{ $variant->product_id }}">
-                                                <button class="btn btn-primary" type="button">View
-                                                    Product</button>
-                                            </a>
-                                        </div>
+                                <h5 class="mb-0 fw-semibold text-center">
+                                    {{ $variant->price }} </h5>
+                                <!-- Button Block -->
+                                <div class="d-flex justify-content-center">
+                                    <a href="/show/{{ $variant->id }}/{{ $variant->product_id }}">
+                                        <button class="btn btn-primary" type="button">View
+                                            Product</button>
+                                    </a>
+                                </div>
 
                             </div>
                         </div>
@@ -121,7 +121,4 @@
     </div>
 
     @include('layouts.footer')
-
-
 @endsection
-
