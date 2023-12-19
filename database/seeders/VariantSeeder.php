@@ -16,11 +16,13 @@ class VariantSeeder extends Seeder
     {
         DB::table('variants')->insert([
             'variant_name' => 'Grape',
+            'price' => 40000,
             'category_id' => 2,
             'product_id' => 1
         ]);
         DB::table('variants')->insert([
             'variant_name' => 'Lychee',
+            'price' => 50000,
             'category_id' => 2,
             'product_id' => 1
         ]);

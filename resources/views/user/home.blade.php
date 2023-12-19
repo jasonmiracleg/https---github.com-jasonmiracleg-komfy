@@ -97,10 +97,8 @@
                                 <h3 class="mb-0 fw-semibold text-center"> <a href="#"
                                         class="text-inherit">{{ $variant->variant_name }}</a></h3>
 
-                                @foreach ($products as $product)
-                                    @if ($variant->product_id == $product->id)
                                         <h5 class="mb-0 fw-semibold text-center">
-                                            {{ $product->price }} </h5>
+                                            {{ $variant->price }} </h5>
                                         <!-- Button Block -->
                                         <div class="d-flex justify-content-center">
                                             <a href="/show/{{ $variant->id }}/{{ $variant->product_id }}">
@@ -108,8 +106,6 @@
                                                     Product</button>
                                             </a>
                                         </div>
-                                    @endif
-                                @endforeach
 
                             </div>
                         </div>

@@ -19,9 +19,13 @@
                     @if ($order->user_id == $user_id)
                         <tr>
                             <th scope="row"> {{ $order->id }} </th>
-                            @foreach ($products as $product)
-                                @if ($product->id == $order->product_id)
-                                    <td> {{ $product->product_name }} </td>
+                            @foreach ($variants as $variant)
+                                @if ($variant->id == $order->variant_id)
+                                    @foreach ($products as $product)
+                                        @if ($product->id == $variant->product_id)
+                                            <td> {{ $product->product_name }} </td>
+                                        @endif
+                                    @endforeach
                                 @endif
                             @endforeach
 

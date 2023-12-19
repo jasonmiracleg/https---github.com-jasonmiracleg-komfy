@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BillController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\VariantController;
@@ -23,6 +24,18 @@ use Livewire\Livewire;
 Route::get('/home', [ProductController::class, 'index']);
 
 Route::get('/show/{variant_id}/{product_id}', [ProductController::class, 'show']);
+
+Route::get('/show_product/{product_id}/{variant_id}', [AdminProductController::class, 'show']);
+
+Route::get('/delete_product/{product_id}/{variant_id}', [AdminProductController::class, 'delete']);
+
+Route::post('/edit_product', [AdminProductController::class, 'edit_product']);
+
+Route::get('/create_product', [AdminProductController::class, 'create_product']);
+
+Route::post('/add', [AdminProductController::class, 'add']);
+
+Route::get('/admin_product', [AdminProductController::class, 'index']);
 
 Route::get('/admin_order', [ProductController::class, 'data']);
 

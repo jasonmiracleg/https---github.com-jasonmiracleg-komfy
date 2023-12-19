@@ -32,7 +32,6 @@ class ProductController extends Controller
     public function show(int $variant_id, int $product_id)
     {
         $product_picture = ProductPicture::select('id', 'picture')
-            ->where('product_id', $product_id)
             ->where('variant_id', $variant_id)
             ->get();
 
@@ -60,7 +59,6 @@ class ProductController extends Controller
 
         Order::create([
             'user_id' => $request->user_id,
-            'product_id' => $request->product_id,
             'variant_id' => $request->variant_id,
             'quantity' => $request->quantity,
             'order_price' => $request->price * $request->quantity
@@ -107,8 +105,6 @@ class ProductController extends Controller
         $products = Product::all();
         $user_id = $request->user_id;
         $orders = Order::all();
-        // $orders = Order::where('user_id', $request->user_id);
-        // dd($orders->count());
 
         return view(
             'user.cart',
