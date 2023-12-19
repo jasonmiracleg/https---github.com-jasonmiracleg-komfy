@@ -49,6 +49,16 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('home') }}">{{ __('Bookkeeping') }}</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('home') }}">{{ __('Products') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.testimony') }}">{{ __('Testimonies') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        href="{{ route('admin.partnership') }}">{{ __('Partnerships') }}</a>
+                                </li>
                             @endif
                         @else
                             <li class="nav-item">
@@ -57,16 +67,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">{{ __('About Us') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('testimony.index') }}">{{ __('Testimonies') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Products') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('partnership.index') }}">{{ __('Partnerships') }}</a>
+                            </li>
                         @endauth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('testimony.index') }}">{{ __('Testimonies') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Products') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('partnership.index') }}">{{ __('Partnerships') }}</a>
-                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

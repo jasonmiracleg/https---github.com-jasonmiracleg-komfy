@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class TestimonyController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     public function index()
     {
         $testimony = [];
@@ -64,7 +68,6 @@ class TestimonyController extends Controller
         $testimony->delete();
         return redirect()->route('testimony.index');
     }
-
     public function accept(Testimony $testimony)
     {
         $testimony->update([

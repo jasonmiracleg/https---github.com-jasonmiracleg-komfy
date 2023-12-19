@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\BillController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PartnershipController as AdminPartnershipController;
+use App\Http\Controllers\Admin\TestimonyController as AdminTestimonyController;
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\VariantController;
@@ -72,3 +74,12 @@ Route::resource('partnership', PartnershipController::class);
 Route::put('/testimony/{testimony}/accept', [TestimonyController::class, 'accept'])->name('testimony.accept');
 Route::put('/testimony/{testimony}/reject', [TestimonyController::class, 'reject'])->name('testimony.reject');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group([
+    'middleware' => 'admin',
+    'prefix' => 'admin',
+    'as' => 'admin.',
+], function () {
+    Route::get('/testimony', [AdminTestimonyController::class, 'index'])->name('testimony');
+    Route::get('/partnership', [AdminPartnershipController::class, 'index'])->name('partnership');
+});
