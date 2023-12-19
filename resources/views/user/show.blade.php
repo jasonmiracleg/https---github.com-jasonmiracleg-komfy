@@ -100,4 +100,7 @@
         </div>
     </section>
     <!-- content -->
+    @include('layouts.footer')
+
 @endsection
+

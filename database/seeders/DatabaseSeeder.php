@@ -29,7 +29,8 @@ class DatabaseSeeder extends Seeder
             'profile_picture' => "asas",
             'role_id' => 1,
             'is_login' => '0',
-            'is_active' => '1'
+            'is_active' => '1',
+            'telephone' => '0812345678'
         ]);
         DB::table('users')->insert([
             'name' => 'Yobel',
@@ -38,7 +39,8 @@ class DatabaseSeeder extends Seeder
             'profile_picture' => "asas",
             'role_id' => 2,
             'is_login' => '0',
-            'is_active' => '1'
+            'is_active' => '1',
+            'telephone' => '0812345678'
         ]);
         $this->call(ProductSeeder::class);
         $this->call(CategorySeeder::class);

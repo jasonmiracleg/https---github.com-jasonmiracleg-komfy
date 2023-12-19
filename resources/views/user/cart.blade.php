@@ -57,4 +57,7 @@
         <input type="hidden" name="user_id" value="{{ Auth::id() }}">
         <button type="submit" class="btn btn-success"> Checkout </button>
     </form>
+    @include('layouts.footer')
+
 @endsection
+

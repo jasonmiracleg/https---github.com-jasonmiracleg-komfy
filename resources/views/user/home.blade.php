@@ -65,6 +65,10 @@
                 <button class="btn btn-primary" type="button">index product</button>
             </a>
 
+            <a href="/admin_order">
+                <button class="btn btn-primary" type="button">index order</button>
+            </a>
+
             <div class="container">
                 <div class="row mb-8 justify-content-center">
                     <!-- caption -->
@@ -116,6 +120,8 @@
         </div>
     </div>
 
-    @include('layouts/footer')
+    @include('layouts.footer')
+
 
 @endsection
+

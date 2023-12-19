@@ -132,21 +132,5 @@ class ProductController extends Controller
         ]);
     }
 
-    public function data()
-    {
-        $products = Product::all();
-        $variants = Variant::all();
-        $users = User::all();
-        $bills = Bill::all();
-        $orders = Order::all();
-
-        return view('admin.order', [
-            'products' => $products,
-            'variants' => $variants,
-            'users' => $users,
-            'bills' => $bills,
-            'orders' => $orders
-        ]);
-
-    }
+    
 }
