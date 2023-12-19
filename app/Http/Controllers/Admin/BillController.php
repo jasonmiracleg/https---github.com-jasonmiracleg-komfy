@@ -8,7 +8,6 @@ use App\Models\Product;
 use App\Models\ProductPicture;
 use App\Models\Variant;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class BillController extends Controller
 {
@@ -29,7 +28,6 @@ class BillController extends Controller
             'product_picture' => $product_picture,
             'variants' => $variants
         ]);
-
     }
 
     public function verify_cash($bill_id)
