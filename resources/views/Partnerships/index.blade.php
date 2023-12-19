@@ -10,20 +10,24 @@
         </div>
     </div>
     <div class="container pt-3 px-5 px-md-0">
-        <div>
-            <form action="{{ route('partnership.create') }}" method="GET">
-                <button class="btn btn-warning mb-3 text-white fw-bold" href="{{ route('testimony.create') }}">
-                    Tambah Partnership
-                </button>
-            </form>
-        </div>
+        @auth
+            @if (Auth::user()->isAdmin())
+                <div>
+                    <form action="{{ route('partnership.create') }}" method="GET">
+                        <button class="btn btn-warning mb-3 text-white fw-bold" href="{{ route('testimony.create') }}">
+                            Tambah Partnership
+                        </button>
+                    </form>
+                </div>
+            @endif
+        @endauth
         <div class="row">
             @foreach ($partnerships as $partnership)
                 <div class="col-lg-3 col-md-6 col-12">
                     <!-- Card -->
                     <div class="card card-hover">
-                        <a href="#"><img src="{{ 'storage/' . $partnership->partnership_picture }}"
-                                class="img-square img-fluid rounded-top w-sm-auto w-100"></a>
+                        <img src="{{ asset('storage/' . $partnership->partnership_picture) }}"
+                            class="img-square img-fluid rounded-top w-sm-auto w-100">
                         <!-- Card Body -->
                         <div class="card-body border-top">
                             <h3 class="fw-bold mb-2 text-truncate-line-2 ">{{ $partnership->partnership_name }}
@@ -36,24 +40,31 @@
                         <!-- Card Footer -->
                         <div class="d-flex flex-wrap py-3 px-5 gap-2" style="background-color: #ffbb5c">
                             <div class="text-center flex-grow-1">
-                                <button class="btn btn-secondary fw-bold w-100">Baca Selengkapnya</button>
+                                <a href="{{ $partnership->url }}">
+                                    <button class="btn btn-secondary fw-bold w-100">Baca
+                                        Selengkapnya</button>
+                                </a>
                             </div>
-                            <div class="text-center flex-grow-1">
-                                <form action="{{ route('partnership.edit', $partnership) }}" method="GET">
-                                    <button class="btn btn-primary fw-bold w-100"
-                                        href="{{ route('partnership.edit', $partnership) }}">Edit Partnership</button>
-                                </form>
-                            </div>
-                            <div class="text-center flex-grow-1">
-                                <form action="{{ route('partnership.destroy', $partnership) }}" method="POST">
-                                    @method('delete')
-                                    @csrf
-                                    <button class="btn btn-danger fw-bold w-100""
-                                        href="{{ route('partnership.destroy', $partnership) }}">
-                                        Hapus Partnership
-                                    </button>
-                                </form>
-                            </div>
+                            @auth
+                                @if (Auth::user()->isAdmin())
+                                    <div class="text-center flex-grow-1">
+                                        <form action="{{ route('partnership.edit', $partnership) }}" method="GET">
+                                            <button class="btn btn-primary fw-bold w-100"
+                                                href="{{ route('partnership.edit', $partnership) }}">Edit Partnership</button>
+                                        </form>
+                                    </div>
+                                    <div class="text-center flex-grow-1">
+                                        <form action="{{ route('partnership.destroy', $partnership) }}" method="POST">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="btn btn-danger fw-bold w-100""
+                                                href="{{ route('partnership.destroy', $partnership) }}">
+                                                Hapus Partnership
+                                            </button>
+                                        </form>
+                                    </div>
+                                @endif
+                            @endauth
                         </div>
                     </div>
                 </div>
