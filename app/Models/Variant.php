@@ -11,8 +11,8 @@ class Variant extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['variant_name', 'category_id', 'product_id'];
-    
+    protected $fillable = ['variant_name', 'price', 'category_id', 'product_id'];
+
     public function varies(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');

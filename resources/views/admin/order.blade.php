@@ -19,7 +19,6 @@
         <thead>
             <tr>
                 <th scope="col">Bill ID</th>
-                <th scope="col">Order ID</th>
                 <th scope="col">Buyer Name</th>
                 <th scope="col">Product</th>
                 <th scope="col">Variant</th>
@@ -30,18 +29,18 @@
         </thead>
         <tbody>
 
-            @foreach ($bills as $bill)
+            @php
+                $latest_bill_id = 0;
+            @endphp
 
-                
-
-                @foreach ($orders as $order)
+            @foreach ($orders as $order)
+                @if ($order->bill_id != null)
                     <tr>
 
-                        <th scope="row"> {{ $bill->id }} </th>
-                        <td> {{ $order->id }}</td>
+                        <th scope="row"> {{ $order->bill_id }} </th>
 
                         @foreach ($users as $user)
-                            @if ($bill->user_id == $user->id)
+                            @if ($order->user_id == $user->id)
                                 <td> {{ $user->name }} </td>
                             @endif
                         @endforeach
@@ -58,12 +57,41 @@
                             @endif
                         @endforeach
 
-                        @if ($is_access == false)
+                        <td> {{ $order->quantity }} </td>
+                        <td> {{ $order->order_price }} </td>
 
-                        @endif
+                        <td>
+                            @if ($latest_bill_id != $order->bill_id)
+                                @foreach ($bills as $bill)
+                                    @if ($bill->id == $order->bill_id)
+                                        @if ($bill->is_cash == '1' || $bill->is_paid == '1')
+                                            @if ($bill->is_cash == '1')
+                                                <button type="button" class="btn btn-warning">
+                                                    Akan dibayar cash
+                                                </button>
+                                            @else
+                                                <button type="button" class="btn btn-warning">
+                                                    Sudah dibayar
+                                                </button>
+                                            @endif
+                                        @else
+                                            <a href="/verify_is_paid/{{ $order->bill_id }}">
+                                                <button type="button" class="btn btn-warning"> Pembayaran Transfer </button>
+                                            </a>
+                                            <a href="/verify_is_cash/{{ $order->bill_id }}">
+                                                <button type="button" class="btn btn-success"> Pembayaran Cash </button>
+                                            </a>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                @php
+                                    $latest_bill_id = $order->bill_id;
+                                @endphp
+                            @endif
+                        </td>
 
                     </tr>
-                @endforeach
+                @endif
             @endforeach
 
         </tbody>

@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <span name="product_price" class="h5"> {{ $product->price }} </span>
+                                    <span name="product_price" class="h5"> {{ $variant->price }} </span>
                                     <span class="text-muted">/per item</span>
                                 </div>
 
@@ -79,7 +79,7 @@
                                 </div>
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 <input type="hidden" name="variant_id" value="{{ $variant->id }}">
-                                <input type="hidden" name="price" value="{{ $product->price }}">
+                                <input type="hidden" name="price" value="{{ $variant->price }}">
                                 <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id() }}">
 
                                 <button class="btn btn-light border border-secondary py-2 icon-hover px-3" type="submit">

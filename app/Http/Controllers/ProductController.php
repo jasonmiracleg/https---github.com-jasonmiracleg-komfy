@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductPicture;
+use App\Models\User;
 use App\Models\Variant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -31,7 +32,6 @@ class ProductController extends Controller
     public function show(int $variant_id, int $product_id)
     {
         $product_picture = ProductPicture::select('id', 'picture')
-            ->where('product_id', $product_id)
             ->where('variant_id', $variant_id)
             ->get();
 
@@ -59,7 +59,6 @@ class ProductController extends Controller
 
         Order::create([
             'user_id' => $request->user_id,
-            'product_id' => $request->product_id,
             'variant_id' => $request->variant_id,
             'quantity' => $request->quantity,
             'order_price' => $request->price * $request->quantity
@@ -106,8 +105,6 @@ class ProductController extends Controller
         $products = Product::all();
         $user_id = $request->user_id;
         $orders = Order::all();
-        // $orders = Order::where('user_id', $request->user_id);
-        // dd($orders->count());
 
         return view(
             'user.cart',
@@ -132,6 +129,23 @@ class ProductController extends Controller
             'products' => $products,
             'product_picture' => $product_picture,
             'variants' => $variants
+        ]);
+    }
+
+    public function data()
+    {
+        $products = Product::all();
+        $variants = Variant::all();
+        $users = User::all();
+        $bills = Bill::all();
+        $orders = Order::all();
+
+        return view('admin.order', [
+            'products' => $products,
+            'variants' => $variants,
+            'users' => $users,
+            'bills' => $bills,
+            'orders' => $orders
         ]);
     }
 }

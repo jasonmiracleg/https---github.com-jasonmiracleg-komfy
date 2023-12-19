@@ -15,31 +15,38 @@
         <tbody>
 
             @foreach ($orders as $order)
-                <tr>
+                @if ($order->bill_id == null)
+                    @if ($order->user_id == $user_id)
+                        <tr>
+                            <th scope="row"> {{ $order->id }} </th>
+                            @foreach ($variants as $variant)
+                                @if ($variant->id == $order->variant_id)
+                                    @foreach ($products as $product)
+                                        @if ($product->id == $variant->product_id)
+                                            <td> {{ $product->product_name }} </td>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            @endforeach
 
-                    <th scope="row"> {{ $order->id }} </th>
-                    @foreach ($products as $product)
-                        @if ($product->id == $order->product_id)
-                            <td> {{ $product->product_name }} </td>
-                        @endif
-                    @endforeach
+                            @foreach ($variants as $variant)
+                                @if ($variant->id == $order->variant_id)
+                                    <td> {{ $variant->variant_name }} </td>
+                                @endif
+                            @endforeach
 
-                    @foreach ($variants as $variant)
-                        @if ($variant->id == $order->variant_id)
-                            <td> {{ $variant->variant_name }} </td>
-                        @endif
-                    @endforeach
+                            <td> {{ $order->quantity }} </td>
+                            <td> {{ $order->order_price }} </td>
 
-                    <td> {{ $order->quantity }} </td>
-                    <td> {{ $order->order_price }} </td>
+                            <td>
+                                <a href="/delete_order/{{ $order->id }}">
+                                    <button type="button" class="btn btn-danger"> Delete </button>
+                                </a>
+                            </td>
 
-                    <td>
-                        <a href="/delete_order/{{ $order->id }}">
-                            <button type="button" class="btn btn-danger"> Delete </button>
-                        </a>
-                    </td>
-
-                </tr>
+                        </tr>
+                    @endif
+                @endif
             @endforeach
 
         </tbody>
