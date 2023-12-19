@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\SquareImage;
+use App\Models\Partnership;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PartnershipController extends Controller
 {
@@ -19,56 +22,83 @@ class PartnershipController extends Controller
         // }
         return view(
             'Partnerships.index',
-            []
+            ['partnerships' => Partnership::all()]
         );
     }
-    // public function create()
-    // {
-    //     return view(
-    //         'Testimonies.create'
-    //     );
-    // }
+    public function create()
+    {
+        return view(
+            'Partnerships.create'
+        );
+    }
 
-    // public function store(Request $request)
-    // {
-    //     $validatedData = $request->validate([
-    //         'description' => 'required|max:255'
-    //     ]);
-    //     Testimony::create([
-    //         'description' => $validatedData['description'],
-    //         'user_id' => $request['user_id'],
-    //     ]);
-    //     return redirect()->route('testimony.index');
-    // }
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'partnership_name' => 'required',
+            'description' => 'required',
+            'url' => 'url',
+            'phone_number' => 'required| max:13',
+            'partnership_picture' => ['image', new SquareImage]
+        ]);
+        $validatedData['partnership_picture'] = $request->file('partnership_picture')->store('images', ['disk' => 'public']);
 
-    // public function edit(Testimony $testimony)
-    // {
-    //     $testimonyEdit = Testimony::where('id', $testimony->id)->first();
-    //     return view('Testimonies.edit', compact('testimonyEdit'));
-    // }
+        Partnership::create([
+            'partnership_name' => $validatedData['partnership_name'],
+            'description' => $validatedData['description'],
+            'url' => optional($validatedData)['url'],
+            'phone_number' => $validatedData['phone_number'],
+            'partnership_picture' => $validatedData['partnership_picture']
+        ]);
+        return redirect()->route('partnership.index');
+    }
 
-    // public function update(Request $request, Testimony $testimony)
-    // {
-    //     $testimony->update([
-    //         'description' => $request->description,
-    //     ]);
-    //     return redirect()->route('testimony.index');
-    // }
-    // public function destroy(Testimony $testimony)
-    // {
-    //     $testimony->delete();
-    //     return redirect()->route('testimony.index');
-    // }
+    public function edit(Partnership $partnership)
+    {
+        $partnershipEdit = Partnership::where('id', $partnership->id)->first();
+        return view('Partnerships.edit', compact('partnershipEdit'));
+    }
 
-    // public function accept(Testimony $testimony)
-    // {
-    //     $testimony->update([
-    //         'is_accepted' => '1',
-    //     ]);
-    //     return redirect()->route('testimony.index');
-    // }
-    // public function reject(Testimony $testimony)
-    // {
-    //     $this->destroy($testimony);
-    // }
+    public function update(Request $request, Partnership $partnership)
+    {
+        $validatedData = $request->validate([
+            'partnership_name' => 'required',
+            'description' => 'required',
+            'url' => 'url',
+            'phone_number' => 'required| max:13'
+        ]);
+        if ($request->partnership_picture) {
+            $validatedData = $request->validate([
+                'partnership_picture' => ['image', new SquareImage]
+            ]);
+            if ($partnership->partnership_picture) {
+                Storage::disk('public')->delete($partnership->partnership_picture);
+            }
+            $validatedData['partnership_picture'] = $request->file('partnership_picture')->store('images', ['disk' => 'public']);
+
+            $partnership->update([
+                'partnership_picture' => $validatedData['partnership_picture']
+            ]);
+        }
+
+        $partnership->update([
+            'partnership_name' => $validatedData['partnership_name'],
+            'description' => $validatedData['description'],
+            'url' => optional($validatedData)['url'],
+            'phone_number' => $validatedData['phone_number'],
+        ]);
+
+        return redirect()->route('partnership.index');
+    }
+
+    public function destroy(Partnership $partnership)
+    {
+        if ($partnership->partnership_picture) {
+            if (Storage::disk('public')->exists($partnership->partnership_picture)) {
+                Storage::disk('public')->delete($partnership->partnership_picture);
+            }
+        }
+        $partnership->delete();
+        return redirect()->route('partnership.index');
+    }
 }
