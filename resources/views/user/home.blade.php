@@ -68,12 +68,21 @@
                 <button class="btn btn-primary" type="button">index order</button>
             </a>
 
+            <a href="/admin_order">
+                <button class="btn btn-primary" type="button">index about us</button>
+            </a>
+
             <div class="container">
                 <div class="row mt-12 justify-content-center">
                     <!-- caption -->
                     <div class="col-lg-8 col-md-12 col-12 text-center">
-                        <h2 class="mb-4 display-4 fw-bold">Our <u class="text-warning"><span
-                                    class="text-primary">Product</span></u></h2>
+
+                        <h2 class="mb-4 display-4 fw-bold">
+
+                            <u class="text-warning"><span
+                                    class="text-primary">Produk</span></u>
+                                    Kami
+                                </h2>
                     </div>
                 </div>
                 <!-- row -->
@@ -99,7 +108,8 @@
                             <div class="card-body">
                                 @foreach ($products as $product)
                                     @if ($product->id == $variant->product_id)
-                                        <h5 class="mb-2 fw-bold text-center"> {{ $product->product_name }} - {{ $variant->variant_name }} </h5>
+                                        <h5 class="mb-2 fw-bold text-center"> {{ $product->product_name }} -
+                                            {{ $variant->variant_name }} </h5>
                                     @endif
                                 @endforeach
 
@@ -108,8 +118,7 @@
                                 <!-- Button Block -->
                                 <div class="d-flex justify-content-center">
                                     <a href="/show/{{ $variant->id }}/{{ $variant->product_id }}">
-                                        <button class="btn btn-primary" type="button">View
-                                            Product</button>
+                                        <button class="btn btn-primary" type="button">Lihat Detail</button>
                                     </a>
                                 </div>
 

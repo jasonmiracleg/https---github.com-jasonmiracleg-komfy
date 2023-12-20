@@ -22,13 +22,12 @@
                         @csrf
                         <div class="main-content">
 
-
                             <h4 class="title text-dark fw-bold mb-3">{{ $product->product_name }} -
                                 {{ $variant->variant_name }}</h4>
                             <h5 name="product_price" class="h5 mb-3"> Rp. {{ $variant->price }} /item</h5>
 
                             <div class="mb-3">
-                                <label>Category: {{ $category->category_name }}</label>
+                                <label>Kategori : {{ $category->category_name }}</label>
                             </div>
 
                             <div class="mb-3">
@@ -36,8 +35,8 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label" for="textInput">Quantity : </label>
-                                <input type="number" name="quantity" min="1" class="form-control mb-3" required placeholder="Input Quantity">
+                                <label class="form-label" for="textInput">Jumlah : </label>
+                                <input type="number" name="quantity" min="1" class="form-control mb-3" required placeholder="Input Jumlah">
                             </div>
 
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -46,7 +45,7 @@
                             <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id() }}">
 
                             <button class="btn btn-success border border-secondary icon-hover px-3" type="submit">
-                                Add to Cart
+                                Tambah ke Keranjang
                             </button>
 
                         </div>

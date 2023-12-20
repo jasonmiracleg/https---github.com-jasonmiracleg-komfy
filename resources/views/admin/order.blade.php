@@ -5,14 +5,14 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Bill ID</th>
-                <th scope="col">Buyer Name</th>
-                <th scope="col">Telephone</th>
-                <th scope="col">Product</th>
-                <th scope="col">Variant</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Order Price</th>
-                <th scope="col">Action</th>
+                <th scope="col">No</th>
+                <th scope="col">Nama Pembeli</th>
+                <th scope="col">Nomor HP </th>
+                <th scope="col">Nama Produk</th>
+                <th scope="col">Varian</th>
+                <th scope="col">Jumlah</th>
+                <th scope="col">Total Harga</th>
+                <th scope="col">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -25,7 +25,7 @@
                 @if ($order->bill_id != null)
                     <tr>
 
-                        <th scope="row"> {{ $order->bill_id }} </th>
+                        <th scope="row"> {{ $loop->index + 1 }} </th>
 
                         @foreach ($users as $user)
                             @if ($order->user_id == $user->id)

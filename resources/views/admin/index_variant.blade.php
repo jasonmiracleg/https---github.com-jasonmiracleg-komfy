@@ -20,7 +20,7 @@
 
                 @foreach ($variants as $variant)
                     <tr>
-                        <th scope="row"> {{ $variant->id }} </th>
+                        <th scope="row"> {{ $loop->index + 1 }} </th>
 
                         @foreach ($products as $product)
                             @if ($product->id == $variant->product_id)
@@ -44,7 +44,7 @@
                                 <button type="button" class="btn btn-warning"> Update </button>
                             </a>
                             <a href="/delete_variant/{{ $variant->id }}">
-                                <button type="button" class="btn btn-danger"> Delete </button>
+                                <button type="button" class="btn btn-danger"> Hapus </button>
                             </a>
                         </td>
 

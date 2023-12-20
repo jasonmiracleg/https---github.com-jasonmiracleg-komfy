@@ -19,7 +19,7 @@
                     placeholder="Deskripsi Produk Lama : {{ $product->description }}" name="description">
             </div>
 
-            <button type="submit" class="btn btn-primary mb-2">Save edit</button>
+            <button type="submit" class="btn btn-primary mb-2">Simpan</button>
 
         </form>
     </div>

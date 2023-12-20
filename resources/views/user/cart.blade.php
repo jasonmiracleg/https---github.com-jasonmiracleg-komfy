@@ -7,11 +7,11 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Product</th>
-                    <th scope="col">Variant</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Order Price</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Produk</th>
+                    <th scope="col">Varian</th>
+                    <th scope="col">Jumlah</th>
+                    <th scope="col">Total Harga</th>
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,7 +20,7 @@
                     @if ($order->bill_id == null)
                         @if ($order->user_id == $user_id)
                             <tr>
-                                <th scope="row"> {{ $order->id }} </th>
+                                <th scope="row"> {{ $loop->index }} </th>
                                 @foreach ($variants as $variant)
                                     @if ($variant->id == $order->variant_id)
                                         @foreach ($products as $product)
@@ -42,7 +42,7 @@
 
                                 <td>
                                     <a href="/delete_order/{{ $order->id }}">
-                                        <button type="button" class="btn btn-danger"> Delete </button>
+                                        <button type="button" class="btn btn-danger"> Hapus </button>
                                     </a>
                                 </td>
 

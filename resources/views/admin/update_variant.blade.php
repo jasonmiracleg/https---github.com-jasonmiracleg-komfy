@@ -8,11 +8,11 @@
 
              <!-- Select Option -->
              <div class="mb-3">
-                <label class="form-label" for="selectOne">Select Product : </label>
+                <label class="form-label" for="selectOne">Pilih Produk : </label>
                 <select required class="form-select" name="product_id" aria-label="Default select example">
                     @foreach ($products as $product)
                         @if ($product->id == $variant->product_id)
-                            <option selected>Recent Product : {{ $product->product_name }}</option>
+                            <option selected>Produk Lama : {{ $product->product_name }}</option>
                         @endif
                     @endforeach
                     @foreach ($products as $product)
@@ -24,22 +24,22 @@
             <!-- Input -->
             <div class="mb-3">
                 <label class="form-label" for="textInput">Masukkan nama varian :  </label>
-                <input required type="text" id="textInput" class="form-control" placeholder="Recent Variant Name : {{ $variant->variant_name }}" name="variant_name">
+                <input required type="text" id="textInput" class="form-control" placeholder="Varian Lama : {{ $variant->variant_name }}" name="variant_name">
             </div>
 
             <!-- Input -->
             <div class="mb-3">
-                <label class="form-label" for="textInput">Recent Price : {{ $variant->price }} </label>
-                <input required type="number" id="textInput" class="form-control" placeholder="Price" name="price">
+                <label class="form-label" for="textInput"> Harga Baru : </label>
+                <input required type="number" id="textInput" class="form-control" placeholder="Harga Lama : {{ $variant->price }}" name="price">
             </div>
 
             <!-- Select Option -->
             <div class="mb-3">
-                <label class="form-label" for="selectOne">Select <span class="text-secondary">Category</span></label>
+                <label class="form-label" for="selectOne"> Pilih Kategori : </label>
                 <select required class="form-select" name="category_id" aria-label="Default select example">
                     @foreach ($categories as $category)
                         @if ($category->id == $variant->category_id)
-                            <option selected>Recent Category : {{ $category->category_name }}</option>
+                            <option selected>Kategori Lama : {{ $category->category_name }}</option>
                         @endif
                     @endforeach
                     @foreach ($categories as $category)
@@ -50,7 +50,7 @@
 
             <!-- Input -->
             <div class="mb-3">
-                <label class="form-label">Image : </label>
+                <label class="form-label">Gambar : </label>
                 @foreach ($images as $image)
                     @if ($image->variant_id == $variant->id)
                         <img src="/assets/image/{{ $image->picture }}" style="max-height: 100px; max-width:100px;"
@@ -64,7 +64,7 @@
                     accept="image/*">
             </div>
 
-            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            <button type="submit" class="btn btn-primary mb-2">Simpan</button>
 
         </form>
     </div>
