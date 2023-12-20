@@ -15,21 +15,23 @@ class VariantSeeder extends Seeder
     public function run(): void
     {
         DB::table('variants')->insert([
-            'variant_name' => 'Grape',
-            'price' => 40000,
+            'variant_name' => 'Original',
+            'price' => 28000,
             'category_id' => 2,
             'product_id' => 1
         ]);
         DB::table('variants')->insert([
-            'variant_name' => 'Lychee',
-            'price' => 50000,
+            'variant_name' => 'Butterfly Pea',
+            'price' => 30000,
             'category_id' => 2,
             'product_id' => 1
         ]);
-        // DB::table('variants')->insert([
-        //     'variant_name' => 'Orange',
-        //     'category_id' => 2,
-        //     'product_id' => 1
-        // ]);
+        DB::table('variants')->insert([
+            'variant_name' => 'Strawberry',
+            'price' => 35000,
+            'category_id' => 2,
+            'product_id' => 1
+        ]);
+
     }
 }

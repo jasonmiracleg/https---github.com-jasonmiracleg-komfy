@@ -32,7 +32,7 @@
                     <div class="col-xxl-5 offset-xxl-1 col-xl-6 col-lg-6 col-12 d-lg-flex justify-content-end">
                         <div class="mt-12 mt-lg-0 position-relative">
 
-                            <img src="../assets/image/kombucha.JPG" alt="online course"
+                            <img src="{{asset('assets/image/kombucha.JPG')}}" alt="online course"
                                 class="img-fluid rounded-4 z-1 position-relative d-lg-block d-none" style="width: 26vw">
 
                         </div>
@@ -62,14 +62,13 @@
                     @foreach ($variants as $variant)
                         <div class=" mt-3 col-xl-3 col-lg-4 col-md-6 col-12">
                             <!-- card -->
-                            <div class="card mb-4 card-hover">
+                            <div class="card mb-4 card-hover" style="height:80vh">
 
                                 @foreach ($product_picture as $product_pict)
                                     @if ($product_pict->variant_id == $variant->id)
                                         <!-- img -->
                                         <div class="card-img-top">
-                                            <img src="/assets/image/{{ $product_pict->picture }}" alt=""
-                                                class="rounded-top-md img-fluid" style="height: 40vh; width:100%">
+                                            <img src="{{ asset('/assets/image/' . $product_pict->picture) }}" alt="err" class="rounded-top-md img-fluid" style="height: 50vh; width: 100%;">
                                         </div>
                                     @break
                                 @endif
