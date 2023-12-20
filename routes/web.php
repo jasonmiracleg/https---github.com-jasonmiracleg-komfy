@@ -31,7 +31,7 @@ Route::get('/about_us', function () {
     return view('user.about_us');
 });
 
-Route::get('/home', [ProductController::class, 'index']);
+Route::get('/product', [ProductController::class, 'index'])->name('produk');
 
 Route::get('/show/{variant_id}/{product_id}', [ProductController::class, 'show']);
 

@@ -41,17 +41,17 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                        href="{{ route('admin.bookkeeping.index') }}">{{ __('Bookkeeping') }}</a>
+                                        href="{{ route('admin.bookkeeping.index') }}">{{ __('Pembukuan') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('home') }}">{{ __('Products') }}</a>
+                                    <a class="nav-link" href="/admin_product">{{ __('Produk') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.testimony') }}">{{ __('Testimonies') }}</a>
+                                    <a class="nav-link" href="{{ route('admin.testimony') }}">{{ __('Testimoni') }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                        href="{{ route('admin.partnership') }}">{{ __('Partnerships') }}</a>
+                                        href="{{ route('admin.partnership') }}">{{ __('Partnership') }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/admin_category"> Kategori </a>
@@ -59,52 +59,31 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/admin_variant"> Variant </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/admin_product"> Produk </a>
-                                </li>
-                                
                             @endif
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">{{ __('About Us') }}</a>
+                                <a class="nav-link" href="/about_us">{{ __('Tentang Kami') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('testimony.index') }}">{{ __('Testimonies') }}</a>
+                                <form method="POST" action="/check_cart">
+                                    @csrf
+                                    <button class="nav-link"> Keranjang </button>
+                                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                                </form>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">{{ __('Products') }}</a>
+                                <a class="nav-link" href="{{ route('testimony.index') }}">{{ __('Testimoni') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('partnership.index') }}">{{ __('Partnerships') }}</a>
+                                <a class="nav-link" href="{{ route('produk') }}">{{ __('Produk') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('partnership.index') }}">{{ __('Partnership') }}</a>
                             </li>
                         @endauth
-<<<<<<< HEAD
-=======
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <form method="POST" action="/check_cart">
-                                @csrf
-                                <button class="nav-link"> Keranjang </button>
-                                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Testimonies') }}</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Partnerships') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about_us"> About Us </a>
-                        </li>
->>>>>>> yobel
                     </ul>
 
                     <!-- Right Side Of Navbar -->
