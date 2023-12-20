@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PartnershipController as AdminPartnershipController;
 use App\Http\Controllers\Admin\TestimonyController as AdminTestimonyController;
 use App\Http\Controllers\PartnershipController;
+use App\Http\Controllers\Admin\ProductPictureController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\VariantController;
 use App\Livewire\Show;
@@ -26,33 +27,45 @@ use Livewire\Livewire;
 |
 */
 
+Route::get('/about_us', function () {
+    return view('user.about_us');
+});
+
 Route::get('/home', [ProductController::class, 'index']);
 
 Route::get('/show/{variant_id}/{product_id}', [ProductController::class, 'show']);
 
-Route::get('/show_product/{product_id}/{variant_id}', [AdminProductController::class, 'show']);
+Route::get('/update_product/{product_id}', [AdminProductController::class, 'show']);
 
-Route::get('/delete_product/{product_id}/{variant_id}', [AdminProductController::class, 'delete']);
+Route::get('/delete_product/{product_id}', [AdminProductController::class, 'delete']);
 
 Route::post('/edit_product', [AdminProductController::class, 'edit_product']);
 
 Route::get('/create_product', [AdminProductController::class, 'create_product']);
 
-Route::post('/add', [AdminProductController::class, 'add']);
+Route::post('/add', [AdminProductController::class, 'add'])->name('product.add');
 
-Route::get('/admin_product', [AdminProductController::class, 'index']);
+Route::get('/admin_product', [AdminProductController::class, 'index'])->name('product.admin');
 
-Route::get('/admin_order', [ProductController::class, 'data']);
+Route::get('/admin_order', [AdminProductController::class, 'data'])->name('order.admin');
 
-Route::get('/admin_category', [CategoryController::class, 'index']);
+Route::get('/create_new_var', [VariantController::class, 'create_var']);
+
+Route::get('/admin_category', [CategoryController::class, 'index'])->name('category.admin');
 
 Route::get('/delete_category/{category_id}', [CategoryController::class, 'delete']);
 
 Route::post('/create_category', [CategoryController::class, 'create']);
 
-Route::get('/admin_variant', [VariantController::class, 'index']);
+Route::get('/admin_variant', [VariantController::class, 'index'])->name('variant.admin');
 
 Route::get('/delete_variant/{variant_id}', [VariantController::class, 'delete']);
+
+Route::get('/update_variant/{variant_id}', [VariantController::class, 'update']);
+
+Route::post('/update_admin_variant', [VariantController::class, 'update_variant']);
+
+Route::get('/delete_single_image/{image_id}', [ProductPictureController::class, 'delete']);
 
 Route::post('/create_variant', [VariantController::class, 'create']);
 

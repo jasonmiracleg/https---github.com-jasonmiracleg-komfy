@@ -53,10 +53,6 @@ class ProductController extends Controller
 
     public function cart(Request $request)
     {
-        $products = Product::all();
-        $variants = Variant::all();
-        $product_picture = ProductPicture::all();
-
         Order::create([
             'user_id' => $request->user_id,
             'variant_id' => $request->variant_id,
@@ -64,11 +60,7 @@ class ProductController extends Controller
             'order_price' => $request->price * $request->quantity
         ]);
 
-        return view('user.home', [
-            'products' => $products,
-            'product_picture' => $product_picture,
-            'variants' => $variants
-        ]);
+        return redirect()->route('home');
     }
 
     public function checkout(Request $request)
@@ -80,7 +72,8 @@ class ProductController extends Controller
             'is_cash' => '0'
         ]);
 
-        $orders = Order::where('user_id', $user_id);
+        $orders = Order::where('user_id', $user_id)
+            ->where('bill_id', NULL);
 
         $orders->update(
             [
@@ -88,15 +81,7 @@ class ProductController extends Controller
             ]
         );
 
-        $products = Product::all();
-        $variants = Variant::all();
-        $product_picture = ProductPicture::all();
-
-        return view('user.home', [
-            'products' => $products,
-            'product_picture' => $product_picture,
-            'variants' => $variants
-        ]);
+        return redirect()->route('home');
     }
 
     public function show_cart(Request $request)
@@ -121,31 +106,6 @@ class ProductController extends Controller
     {
         Order::find($order_id)->delete();
 
-        $products = Product::all();
-        $variants = Variant::all();
-        $product_picture = ProductPicture::all();
-
-        return view('user.home', [
-            'products' => $products,
-            'product_picture' => $product_picture,
-            'variants' => $variants
-        ]);
-    }
-
-    public function data()
-    {
-        $products = Product::all();
-        $variants = Variant::all();
-        $users = User::all();
-        $bills = Bill::all();
-        $orders = Order::all();
-
-        return view('admin.order', [
-            'products' => $products,
-            'variants' => $variants,
-            'users' => $users,
-            'bills' => $bills,
-            'orders' => $orders
-        ]);
+        return redirect()->route('home');
     }
 }

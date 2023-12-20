@@ -26,14 +26,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
         $variants = Variant::all();
+        $products = Product::all();
         $product_picture = ProductPicture::all();
 
-        return view('user.home', [
-            'products' => $products,
-            'product_picture' => $product_picture,
-            'variants' => $variants
-        ]);
+        return view(
+            'user.home',
+            [
+                'variants' => $variants,
+                'products' => $products,
+                'product_picture' => $product_picture
+            ]
+        );
     }
 }
