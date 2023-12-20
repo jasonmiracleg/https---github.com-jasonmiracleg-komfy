@@ -16,11 +16,11 @@
                 <div class="my-6">
                     <!--Facebook-->
                     <a href="#" class="text-muted me-4">
-                        <img src="assets/image/instagram.png" alt="" style="width:24px; height:24px">
+                        <img src="{{ asset('assets/image/instagram.png') }}" alt="" style="width:24px; height:24px">
                     </a>
                     <!--Twitter-->
                     <a href="#" class="text-muted me-4">
-                        <img src="assets/image/whatsapp.png" alt="" style="width:24px; height:24px">
+                        <img src="{{ asset('assets/image/whatsapp.png') }}" alt="" style="width:24px; height:24px">
                     </a>
                 </div>
             </div>

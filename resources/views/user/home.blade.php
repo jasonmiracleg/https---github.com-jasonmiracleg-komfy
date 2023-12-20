@@ -15,17 +15,17 @@
                                 are fully customizable.</p>
                             <ul class="list-unstyled mb-5">
                                 <li class="mb-2">
-                                    <img src="assets/image/verified_icon.png" alt=""
+                                    <img src="{{ asset('assets/image/verified_icon.png') }}" alt=""
                                         style="width:24px; height:24px">
                                     <span class="ms-2">Sehat</span>
                                 </li>
                                 <li class="mb-2">
-                                    <img src="assets/image/verified_icon.png" alt=""
+                                    <img src="{{ asset('assets/image/verified_icon.png') }}" alt=""
                                         style="width:24px; height:24px">
                                     <span class="ms-2">Menyegarkan</span>
                                 </li>
                                 <li class="mb-2">
-                                    <img src="assets/image/verified_icon.png" alt=""
+                                    <img src="{{ asset('assets/image/verified_icon.png') }}" alt=""
                                         style="width:24px; height:24px">
                                     <span class="ms-2">Harga terjangkau</span>
                                 </li>
