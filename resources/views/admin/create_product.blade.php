@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="mx-5">
-        <form method="POST" action="/add">
+        <form method="POST" action="{{ route('product.add') }}">
             @csrf
             <!-- Input -->
             <div class="mb-3">

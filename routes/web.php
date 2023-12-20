@@ -38,21 +38,21 @@ Route::post('/edit_product', [AdminProductController::class, 'edit_product']);
 
 Route::get('/create_product', [AdminProductController::class, 'create_product']);
 
-Route::post('/add', [AdminProductController::class, 'add']);
+Route::post('/add', [AdminProductController::class, 'add'])->name('product.add');
 
-Route::get('/admin_product', [AdminProductController::class, 'index']);
+Route::get('/admin_product', [AdminProductController::class, 'index'])->name('product.admin');
 
-Route::get('/admin_order', [AdminProductController::class, 'data']);
+Route::get('/admin_order', [AdminProductController::class, 'data'])->name('order.admin');
 
 Route::get('/create_new_var', [VariantController::class, 'create_var']);
 
-Route::get('/admin_category', [CategoryController::class, 'index']);
+Route::get('/admin_category', [CategoryController::class, 'index'])->name('category.admin');
 
 Route::get('/delete_category/{category_id}', [CategoryController::class, 'delete']);
 
 Route::post('/create_category', [CategoryController::class, 'create']);
 
-Route::get('/admin_variant', [VariantController::class, 'index']);
+Route::get('/admin_variant', [VariantController::class, 'index'])->name('variant.admin');
 
 Route::get('/delete_variant/{variant_id}', [VariantController::class, 'delete']);
 

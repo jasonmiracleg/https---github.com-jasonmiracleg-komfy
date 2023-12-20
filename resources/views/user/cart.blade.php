@@ -15,12 +15,17 @@
                 </tr>
             </thead>
             <tbody>
-
+                @php
+                    $counter = 0;
+                @endphp
                 @foreach ($orders as $order)
                     @if ($order->bill_id == null)
                         @if ($order->user_id == $user_id)
+                            @php
+                                $counter += 1;
+                            @endphp
                             <tr>
-                                <th scope="row"> {{ $loop->index }} </th>
+                                <th scope="row"> {{ $counter }} </th>
                                 @foreach ($variants as $variant)
                                     @if ($variant->id == $order->variant_id)
                                         @foreach ($products as $product)

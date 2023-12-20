@@ -32,7 +32,7 @@
                             document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
                         </script>
                     </span>
-                    Geeks-UI, Inc. All Rights Reserved
+                    KOMFY, Inc. All Rights Reserved
                 </span>
             </div>
             <!-- Links -->

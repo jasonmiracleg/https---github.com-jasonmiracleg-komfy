@@ -3,7 +3,7 @@
 @section('content')
     <div class="mx-5">
         <a href="/create_new_var">
-            <button type="button" class="btn btn-success"> Create new </button>
+            <button type="button" class="btn btn-success"> Buat Baru </button>
         </a>
         <table class="table table-striped">
             <thead>

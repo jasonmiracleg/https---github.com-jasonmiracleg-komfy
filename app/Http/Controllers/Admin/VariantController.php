@@ -29,15 +29,7 @@ class VariantController extends Controller
     {
         Variant::find($variant_id)->delete();
 
-        $variants = Variant::all();
-        $products = Product::all();
-        $categories = Category::all();
-
-        return view('admin.index_variant', [
-            'variants' => $variants,
-            'products' => $products,
-            'categories' => $categories
-        ]);
+        return redirect()->route('variant.admin');
     }
 
     public function create_var()
@@ -74,15 +66,8 @@ class VariantController extends Controller
 
         // dd($files);
 
-        $variants = Variant::all();
-        $products = Product::all();
-        $categories = Category::all();
+        return redirect()->route('variant.admin');
 
-        return view('admin.index_variant', [
-            'variants' => $variants,
-            'products' => $products,
-            'categories' => $categories
-        ]);
     }
 
     public function update(int $variant_id)
@@ -133,14 +118,7 @@ class VariantController extends Controller
             );
         }
 
-        $variants = Variant::all();
-        $products = Product::all();
-        $categories = Category::all();
+        return redirect()->route('variant.admin');
 
-        return view('admin.index_variant', [
-            'variants' => $variants,
-            'products' => $products,
-            'categories' => $categories
-        ]);
     }
 }

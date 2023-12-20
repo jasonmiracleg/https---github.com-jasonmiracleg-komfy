@@ -20,11 +20,9 @@ class CategoryController extends Controller
     public function delete($category_id)
     {
         Category::find($category_id)->delete();
-        $categories = Category::all();
 
-        return view('admin.index_category', [
-            'categories' => $categories
-        ]);
+        return redirect()->route('category.admin');
+
     }
 
     public function create(Request $request)
@@ -32,11 +30,7 @@ class CategoryController extends Controller
         Category::create([
             'category_name' => $request->category_name
         ]);
-        
-        $categories = Category::all();
 
-        return view('admin.index_category', [
-            'categories' => $categories
-        ]);
+        return redirect()->route('category.admin');
     }
 }

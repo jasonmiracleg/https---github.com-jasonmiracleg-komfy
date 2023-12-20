@@ -46,15 +46,8 @@ class ProductController extends Controller
             'description' => $request->description,
         ]);
 
-        $products = Product::all();
-        $variants = Variant::all();
-        $categories = Category::all();
+        return redirect()->route('product.admin');
 
-        return view('admin.index_product', [
-            'products' => $products,
-            'variants' => $variants,
-            'categories' => $categories
-        ]);
     }
 
     public function delete($product_id)
@@ -62,15 +55,8 @@ class ProductController extends Controller
         $product = Product::find($product_id);
         $product->delete();
 
-        $products = Product::all();
-        $variants = Variant::all();
-        $categories = Category::all();
+        return redirect()->route('product.admin');
 
-        return view('admin.index_product', [
-            'products' => $products,
-            'variants' => $variants,
-            'categories' => $categories
-        ]);
     }
 
     public function create_product()
@@ -109,15 +95,7 @@ class ProductController extends Controller
             'description' => $request->description,
         ]);
 
-        $products = Product::all();
-        $variants = Variant::all();
-        $categories = Category::all();
-
-        return view('admin.index_product', [
-            'products' => $products,
-            'variants' => $variants,
-            'categories' => $categories
-        ]);
+        return redirect()->route('product.admin');
     }
 }
 

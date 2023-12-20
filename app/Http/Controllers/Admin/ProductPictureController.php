@@ -19,9 +19,4 @@ class ProductPictureController extends Controller
         $image->delete();
         return back();
     }
-
-    public function update($image_id)
-    {
-        
-    }
 }

@@ -19,16 +19,7 @@ class BillController extends Controller
         ]);
         $bill->save();
 
-        $products = Product::all();
-        $variants = Variant::all();
-        $product_picture = ProductPicture::all();
-
-        return view('user.home', [
-            'products' => $products,
-            'product_picture' => $product_picture,
-            'variants' => $variants
-        ]);
-
+        return redirect()->route('order.admin');
     }
 
     public function verify_cash($bill_id)
@@ -39,14 +30,6 @@ class BillController extends Controller
         ]);
         $bill->save();
 
-        $products = Product::all();
-        $variants = Variant::all();
-        $product_picture = ProductPicture::all();
-
-        return view('user.home', [
-            'products' => $products,
-            'product_picture' => $product_picture,
-            'variants' => $variants
-        ]);
+       return redirect()->route('order.admin');
     }
 }
