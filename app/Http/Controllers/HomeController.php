@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\ProductPicture;
+use App\Models\Variant;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.home');
+        $variants = Variant::all();
+        $products = Product::all();
+        $product_picture = ProductPicture::all();
+
+        return view('user.home', [
+            'variants' => $variants,
+            'products' => $products,
+            'product_picture' => $product_picture
+        ]
+    );
     }
 }

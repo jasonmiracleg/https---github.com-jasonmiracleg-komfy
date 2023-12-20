@@ -22,15 +22,17 @@ use Livewire\Livewire;
 |
 */
 
+Route::get('/about_us', function() {
+    return view('user.about_us');
+});
+
 Route::get('/home', [ProductController::class, 'index']);
 
 Route::get('/show/{variant_id}/{product_id}', [ProductController::class, 'show']);
 
-Route::get('/show_product/{product_id}/{variant_id}', [AdminProductController::class, 'show']);
+Route::get('/update_product/{product_id}', [AdminProductController::class, 'show']);
 
 Route::get('/delete_product/{product_id}', [AdminProductController::class, 'delete']);
-
-Route::get('/update_product/{product_id}', [AdminProductController::class, 'update']);
 
 Route::post('/edit_product', [AdminProductController::class, 'edit_product']);
 

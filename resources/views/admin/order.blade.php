@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="mx-5">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -95,6 +96,8 @@
 
         </tbody>
     </table>
+</div>
+
     @include('layouts.footer')
 
 @endsection

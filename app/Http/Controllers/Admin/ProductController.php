@@ -27,39 +27,23 @@ class ProductController extends Controller
         ]);
     }
 
-    public function show($product_id, $variant_id)
+    public function show($product_id)
     {
         $product = Product::find($product_id);
-        $variant = Variant::find($variant_id);
-
-        $selectable_variant = Variant::all();
-        $categories = Category::all();
-
-        $product_picture = ProductPicture::select('id', 'picture')
-            ->where('product_id', $product_id)
-            ->where('variant_id', $variant_id)
-            ->get();
 
         return view('admin.detail_product', [
             'recent_product_id' => $product_id,
-            'recent_variant_id' => $variant_id,
-            'product' => $product,
-            'variant' => $variant,
-            'selectable_variant' => $selectable_variant,
-            'categories' => $categories,
-            'product_picture' => $product_picture
+            'product' => $product
         ]);
     }
 
     public function edit_product(Request $request)
     {
         $recent_product = Product::find($request->recent_product_id);
-        // $recent_variant = Variant::find($request->recent_variant_id);
 
-        $recent_product::update([
+        $recent_product->update([
             'product_name' => $request->product_name,
             'description' => $request->description,
-            'price' => $request->price
         ]);
 
         $products = Product::all();
@@ -71,11 +55,6 @@ class ProductController extends Controller
             'variants' => $variants,
             'categories' => $categories
         ]);
-    }
-
-    public function update($product_id)
-    {
-
     }
 
     public function delete($product_id)
