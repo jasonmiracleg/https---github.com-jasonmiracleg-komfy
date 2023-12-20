@@ -46,31 +46,31 @@
 
         <div class="py-8 bg-light-gradient-top ">
 
-            <form method="POST" action="/check_cart">
+            {{-- <form method="POST" action="/check_cart">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                 <button class="btn btn-primary" type="submit">cart</button>
-            </form>
+            </form> --}}
 
-            <a href="/admin_category">
+            {{-- <a href="/admin_category">
                 <button class="btn btn-primary" type="button">index category</button>
-            </a>
+            </a> --}}
 
-            <a href="/admin_variant">
+            {{-- <a href="/admin_variant">
                 <button class="btn btn-primary" type="button">index variant</button>
-            </a>
+            </a> --}}
 
-            <a href="/admin_product">
+            {{-- <a href="/admin_product">
                 <button class="btn btn-primary" type="button">index product</button>
-            </a>
+            </a> --}}
 
-            <a href="/admin_order">
+            {{-- <a href="/admin_order">
                 <button class="btn btn-primary" type="button">index order</button>
-            </a>
+            </a> --}}
 
-            <a href="/admin_order">
+            {{-- <a href="/admin_order">
                 <button class="btn btn-primary" type="button">index about us</button>
-            </a>
+            </a> --}}
 
             <div class="container">
                 <div class="row mt-12 justify-content-center">

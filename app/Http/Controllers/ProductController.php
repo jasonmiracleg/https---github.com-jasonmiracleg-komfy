@@ -53,10 +53,6 @@ class ProductController extends Controller
 
     public function cart(Request $request)
     {
-        $products = Product::all();
-        $variants = Variant::all();
-        $product_picture = ProductPicture::all();
-
         Order::create([
             'user_id' => $request->user_id,
             'variant_id' => $request->variant_id,

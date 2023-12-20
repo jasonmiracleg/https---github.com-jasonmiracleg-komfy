@@ -6,6 +6,7 @@
         <thead>
             <tr>
                 <th scope="col">No</th>
+                <th scope="col">Waktu Checkout</th>
                 <th scope="col">Nama Pembeli</th>
                 <th scope="col">Nomor HP </th>
                 <th scope="col">Nama Produk</th>
@@ -27,6 +28,8 @@
 
                         <th scope="row"> {{ $loop->index + 1 }} </th>
 
+                        <td> {{$order->updated_at}} </td>
+
                         @foreach ($users as $user)
                             @if ($order->user_id == $user->id)
                                 <td> {{ $user->name }} </td>
@@ -44,12 +47,6 @@
                             @endif
                         @endforeach
 
-                        {{-- @foreach ($products as $product)
-                        @if ($order->product_id == $product->id)
-                            <td> {{ $product->product_name }} </td>
-                        @endif
-                    @endforeach --}}
-
                         @foreach ($variants as $variant)
                             @if ($order->variant_id == $variant->id)
                                 <td> {{ $variant->variant_name }} </td>
@@ -65,7 +62,7 @@
                                     @if ($bill->id == $order->bill_id)
                                         @if ($bill->is_cash == '1' || $bill->is_paid == '1')
                                             @if ($bill->is_cash == '1')
-                                                <button type="button" class="btn btn-warning">
+                                                <button type="button" class="btn btn-success">
                                                     Akan dibayar cash
                                                 </button>
                                             @else
