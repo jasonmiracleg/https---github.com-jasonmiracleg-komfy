@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             'email' => "ivana@gmail.com",
             'password' => bcrypt('12345678'),
             'profile_picture' => "asas",
+            'telephone' => '0123142514',
             'role_id' => 1,
             'is_login' => '0',
             'is_active' => '1'
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
             'email' => "yobel@gmail.com",
             'password' => bcrypt('12345678'),
             'profile_picture' => "asas",
+            'telephone' => '0123142514',
             'role_id' => 2,
             'is_login' => '0',
             'is_active' => '1'
@@ -45,6 +47,6 @@ class DatabaseSeeder extends Seeder
         $this->call(VariantSeeder::class);
         $this->call(ProductPictureSeeder::class);
         $this->call(BillSeeder::class);
-        $this->call(OrderSeeder::class);
+        $this->call([OrderSeeder::class, AccountSeeder::class]);
     }
 }

@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('bookkeepings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->index();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('bill_id')->nullable();
             $table->foreign('bill_id')->references('id')->on('bills')->onDelete('cascade');
             $table->unsignedBigInteger('account_id')->index();

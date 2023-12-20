@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BillController;
+use App\Http\Controllers\Admin\BookkeepingController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PartnershipController as AdminPartnershipController;
@@ -71,6 +72,7 @@ Auth::routes();
 
 Route::resource('testimony', TestimonyController::class);
 Route::resource('partnership', PartnershipController::class);
+
 Route::put('/testimony/{testimony}/accept', [TestimonyController::class, 'accept'])->name('testimony.accept');
 Route::put('/testimony/{testimony}/reject', [TestimonyController::class, 'reject'])->name('testimony.reject');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -82,4 +84,5 @@ Route::group([
 ], function () {
     Route::get('/testimony', [AdminTestimonyController::class, 'index'])->name('testimony');
     Route::get('/partnership', [AdminPartnershipController::class, 'index'])->name('partnership');
+    Route::resource('bookkeeping', BookkeepingController::class);
 });

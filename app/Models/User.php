@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'password',
         'profile_picture',
+        'telephone',
         'is_active',
         'is_login',
         'role_id',
@@ -57,16 +58,6 @@ class User extends Authenticatable
     public function testify(): HasMany
     {
         return $this->hasMany(Testimony::class, 'user_id', 'id');
-    }
-
-    public function billing(): HasMany
-    {
-        return $this->hasMany(Bill::class, 'user_id', 'id');
-    }
-
-    public function bookkeeper(): HasMany
-    {
-        return $this->hasMany(Bookkeeping::class, 'user_id', 'id');
     }
 
     public function isAdmin(): bool
