@@ -9,10 +9,7 @@
                         <div>
                             <h1 class="display-2 fw-bold mb-3">Learn today’s most in-<u class="text-warning"><span
                                         class="text-primary">demand-skills</span></u></h1>
-                            <p class="lead mb-4">Classes &amp; Courses website template to start creating your stunning
-                                website. All
-                                templates
-                                are fully customizable.</p>
+                            <p class="lead mb-4">Nikmati minuman enak yang kaya akan manfaat     </p>
                             <ul class="list-unstyled mb-5">
                                 <li class="mb-2">
                                     <img src="{{ asset('assets/image/verified_icon.png') }}" alt=""
@@ -46,31 +43,6 @@
 
         <div class="py-8 bg-light-gradient-top ">
 
-            {{-- <form method="POST" action="/check_cart">
-                @csrf
-                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                <button class="btn btn-primary" type="submit">cart</button>
-            </form> --}}
-
-            {{-- <a href="/admin_category">
-                <button class="btn btn-primary" type="button">index category</button>
-            </a> --}}
-
-            {{-- <a href="/admin_variant">
-                <button class="btn btn-primary" type="button">index variant</button>
-            </a> --}}
-
-            {{-- <a href="/admin_product">
-                <button class="btn btn-primary" type="button">index product</button>
-            </a> --}}
-
-            {{-- <a href="/admin_order">
-                <button class="btn btn-primary" type="button">index order</button>
-            </a> --}}
-
-            {{-- <a href="/admin_order">
-                <button class="btn btn-primary" type="button">index about us</button>
-            </a> --}}
 
             <div class="container">
                 <div class="row mt-12 justify-content-center">
@@ -79,10 +51,9 @@
 
                         <h2 class="mb-4 display-4 fw-bold">
 
-                            <u class="text-warning"><span
-                                    class="text-primary">Produk</span></u>
-                                    Kami
-                                </h2>
+                            <u class="text-warning"><span class="text-primary">Produk</span></u>
+                            Kami
+                        </h2>
                     </div>
                 </div>
                 <!-- row -->
@@ -117,9 +88,18 @@
                                     Rp. {{ $variant->price }} </h5>
                                 <!-- Button Block -->
                                 <div class="d-flex justify-content-center">
-                                    <a href="/show/{{ $variant->id }}/{{ $variant->product_id }}">
-                                        <button class="btn btn-primary" type="button">Lihat Detail</button>
-                                    </a>
+                                    @auth
+                                        @if (Auth::user() != null)
+                                            <a href="/show/{{ $variant->id }}/{{ $variant->product_id }}">
+                                                <button class="btn btn-primary" type="button">Lihat Detail</button>
+                                            </a>
+                                        @endif
+                                    @else
+                                        <a href="{{ route('login') }}">
+                                            <button class="btn btn-primary" type="button">Lihat Detail</button>
+                                        </a>
+                                    @endauth
+
                                 </div>
 
                             </div>

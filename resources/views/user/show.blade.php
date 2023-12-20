@@ -36,14 +36,14 @@
 
                             <div class="col-md-6">
                                 <label class="form-label" for="textInput">Jumlah : </label>
-                                <input type="number" name="quantity" min="1" class="form-control mb-3" required placeholder="Input Jumlah">
+                                <input type="number" name="quantity" min="1" class="form-control mb-3" required
+                                    placeholder="Input Jumlah">
                             </div>
 
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <input type="hidden" name="variant_id" value="{{ $variant->id }}">
                             <input type="hidden" name="price" value="{{ $variant->price }}">
                             <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id() }}">
-
                             <button class="btn btn-success border border-secondary icon-hover px-3" type="submit">
                                 Tambah ke Keranjang
                             </button>

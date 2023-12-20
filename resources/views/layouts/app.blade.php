@@ -58,31 +58,44 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/admin_product"> Produk </a>
                                 </li>
-                                
+                            @elseif (Auth::user()->role_id == 2)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/home">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <form method="POST" action="/check_cart">
+                                        @csrf
+                                        <button class="nav-link"> Keranjang </button>
+                                        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                                    </form>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('home') }}">{{ __('Testimonies') }}</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('home') }}">{{ __('Partnerships') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about_us"> About Us </a>
+                                </li>
                             @endif
-                        @endauth
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="/home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Testimonies') }}</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <form method="POST" action="/check_cart">
-                                @csrf
-                                <button class="nav-link"> Keranjang </button>
-                                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Testimonies') }}</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Partnerships') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about_us"> About Us </a>
-                        </li>
-                    </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Partnerships') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about_us"> About Us </a>
+                            </li>
+                        </ul>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
