@@ -31,9 +31,10 @@
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col" class="col-1">Tipe Akun</th>
+                        <th scope="col" class="col-1">Tanggal Pembuatan</th>
+                        <th scope="col">Tipe Akun</th>
                         <th scope="col" class="col-2">Judul</th>
-                        <th scope="col" class="col-5">Deskripsi</th>
+                        <th scope="col" class="col-4">Deskripsi</th>
                         <th scope="col" class="col-2">Jumlah Nominal</th>
                         <th scope="col">Aksi</th>
                     </tr>
@@ -42,6 +43,7 @@
                     @foreach ($bookkeepings as $bookkeeping)
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
+                            <td>{{ $bookkeeping->created_at }}</td>
                             <td>{{ $bookkeeping->bookkeeping->account_type }}</td>
                             <td>{{ $bookkeeping->title }}</td>
                             <td class="text-start">{{ $bookkeeping->description }}</td>
@@ -67,6 +69,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div>
+                {{ $bookkeepings->links() }}
+            </div>
         </div>
     </div>
     @include('layouts.footer')

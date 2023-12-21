@@ -60,6 +60,11 @@ class User extends Authenticatable
         return $this->hasMany(Testimony::class, 'user_id', 'id');
     }
 
+    public function user(): HasMany
+    {
+        return $this->hasMany(Order::class, 'user_id', 'id');
+    }
+
     public function isAdmin(): bool
     {
         if ($this->role_id == 1) {

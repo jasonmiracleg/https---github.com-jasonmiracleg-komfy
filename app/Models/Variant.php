@@ -25,4 +25,8 @@ class Variant extends Model
     {
         return $this->hasMany(ProductPicture::class, 'variant_id', 'id');
     }
+    public function ordered(): HasMany
+    {
+        return $this->hasMany(Order::class, 'variant_id', 'id');
+    }
 }

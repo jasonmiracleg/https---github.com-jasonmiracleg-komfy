@@ -12,7 +12,7 @@ class BookkeepingController extends Controller
     public function index()
     {
         $accounts = Account::all();
-        $bookkeepings = Bookkeeping::all();
+        $bookkeepings = Bookkeeping::paginate(5);
 
         $totals = Bookkeeping::groupBy('account_id')
             ->selectRaw('account_id, sum(amount) as total_amount')
