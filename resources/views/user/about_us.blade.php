@@ -7,8 +7,8 @@
                 <div class="row d-flex align-items-center">
                     <div class="col-xxl-5 col-xl-6 col-lg-6 col-12">
                         <div>
-                            <h1 class="display-2 fw-bold mb-3">Learn today’s most in-<u class="text-warning"><span
-                                        class="text-primary">demand-skills</span></u></h1>
+                            <h1 class="display-2 fw-bold mb-3">Hidup sehat dengan minum <u class="text-warning"><span
+                                class="text-primary">Kombucha</span></u></h1>
                             <p class="lead mb-4">Nikmati minuman enak yang kaya akan manfaat </p>
                             <ul class="list-unstyled mb-5">
                                 <li class="mb-2">
@@ -113,10 +113,6 @@
                 <div class="col-lg-7">
                     <h1 class="fw-bold mb-3">Kontak <u class="text-warning"><span class="text-primary">Perusahaan</span></u>
                     </h1>
-                    <h3 class="font-bold md:text-lg lg:text-xl">Email:</h3>
-                    <p class="mb-3 md:text-lg lg:text-xl">
-                        #
-                    </p>
                     <div class="mb-3">
                         <h3 class="font-bold md:text-lg lg:text-xl">Instagram:</h3>
                         <a href="https://instagram.com/kombucha.fy?igshid=NzZlODBkYWE4Ng=="
@@ -126,8 +122,8 @@
                     </div>
                     <div class="mb-3">
                         <h3 class="font-bold md:text-lg lg:text-xl">WhatsApp:</h3>
-                        <a href="#" class=" text-decoration-none md:text-lg lg:text-xl">
-                            #
+                        <a href="https://wa.me/6285108929000" class=" text-decoration-none md:text-lg lg:text-xl">
+                            +62 851-0892-9000
                         </a>
                     </div>
                 </div>

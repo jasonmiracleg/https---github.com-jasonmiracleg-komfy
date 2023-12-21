@@ -4,6 +4,7 @@
         <div class="row  justify-content-center text-center  align-items-center ">
             <div class="col-12 col-md-12 col-xxl-6 px-0 ">
                 <div class="mb-4">
+                    <img style="width: 15vh; height: 15vh" src="{{ asset('assets/image/logo.jpg') }}" alt="">
                     <h2>KOMFY</h2>
                     <p class="lead">Kombucha Flavoury, atau lebih dikenal Komfy, merupakan bisnis dan telah berdiri sejak 2023. Bisnis ini bergerak di bidang F&B, tepatnya adalah minuman Kombucha
                     </p>

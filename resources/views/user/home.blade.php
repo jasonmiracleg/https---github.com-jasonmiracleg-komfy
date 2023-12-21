@@ -7,8 +7,8 @@
                 <div class="row d-flex align-items-center">
                     <div class="col-xxl-5 col-xl-6 col-lg-6 col-12">
                         <div>
-                            <h1 class="display-2 fw-bold mb-3">Learn today’s most in-<u class="text-warning"><span
-                                        class="text-primary">demand-skills</span></u></h1>
+                            <h1 class="display-2 fw-bold mb-3">Hidup sehat dengan minum <u class="text-warning"><span
+                                        class="text-primary">Kombucha</span></u></h1>
                             <p class="lead mb-4">Nikmati minuman enak yang kaya akan manfaat     </p>
                             <ul class="list-unstyled mb-5">
                                 <li class="mb-2">
@@ -111,4 +111,5 @@
     </div>
 
     @include('layouts.footer')
+
 @endsection
