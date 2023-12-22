@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <section class="py-lg-16 py-6">
+    <div class="container pt-5">
+        <section class="py-lg-16 py-6" x-show: "open">
             <div class="container">
                 <div class="row d-flex align-items-center">
                     <div class="col-xxl-5 col-xl-6 col-lg-6 col-12">
@@ -79,10 +79,9 @@
 
                         <h2 class="mb-4 display-4 fw-bold">
 
-                            <u class="text-warning"><span
-                                    class="text-primary">Produk</span></u>
-                                    Kami
-                                </h2>
+                            <u class="text-warning"><span class="text-primary">Produk</span></u>
+                            Kami
+                        </h2>
                     </div>
                 </div>
                 <!-- row -->
@@ -129,6 +128,11 @@
 
             </div>
         </div>
+
+        <button x-on:click="open = ! open">
+            Toggle
+        </button>
+
     </div>
 
     @include('layouts.footer')

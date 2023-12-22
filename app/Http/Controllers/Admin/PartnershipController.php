@@ -12,15 +12,6 @@ class PartnershipController extends Controller
 {
     public function index()
     {
-        // $testimony = [];
-        // $testimonyRequest = [];
-        // if (Auth::user() != null) {
-        //     if (Auth::user()->role_id == 1) { // Showing testimony requests
-        //         $testimonyRequest = Testimony::where('is_accepted', '0')->get();
-        //     } else if (Auth::user()->role_id == 2) { // Showing their own testimonies
-        //         $testimony = Testimony::where('user_id', 2)->where('is_accepted', '1')->get();
-        //     }
-        // }
         return view(
             'Partnerships.index',
             ['partnerships' => Partnership::all()]

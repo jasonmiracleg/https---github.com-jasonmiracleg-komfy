@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container pt-4">
         <div class="row d-flex p-lg-3 p-4 align-items-center">
             <div class="col-md-8 order-md-1 order-2">
                 <h1 class="display-1 fw-bold text-center text-md-start">Testimoni Pelanggan</h1>
@@ -17,7 +17,7 @@
                     <div class="border-top border-bottom">
                         <h1 class="mt-3 fw-bolder text-center mb-3">Testimoni Anda</h1>
                         <form action="{{ route('testimony.create') }}" method="GET">
-                            <button class="btn btn-warning mb-3" href="{{ route('testimony.create') }}">
+                            <button class="btn btn-success mb-3" href="{{ route('testimony.create') }}">
                                 Tambah Testimoni
                             </button>
                         </form>
@@ -30,10 +30,17 @@
                                             <div class="d-lg-flex">
                                                 <div
                                                     class="position-relative d-flex justify-content-center align-items-center align-items-lg-start">
-                                                    <img src="{{ asset('image/Testimony.JPG') }}" alt=""
-                                                        class="rounded-circle
+                                                    @if (Storage::disk('public')->exists($testimony->testify->profile_picture))
+                                                        <img src="{{ asset('storage/' . $testimony->testify->profile_picture) }}"
+                                                            class="rounded-circle
                                          mb-3 mb-lg-0 shadow"
-                                                        width="100" height="100">
+                                                            width="100" height="100">
+                                                    @else
+                                                        <img src="{{ asset('image/User_icon.png') }}"
+                                                            class="rounded-circle
+                                         mb-3 mb-lg-0 shadow"
+                                                            width="100" height="100">
+                                                    @endif
                                                 </div>
                                                 <div class="ms-lg-4 text-lg-start text-center text-white">
                                                     <h4 class="mb-0 fw-bold">{{ $testimony->testify->name }}</h4>
@@ -87,19 +94,21 @@
                                                     </p>
                                                     <p>{{ $request->description }}
                                                     </p>
-                                                    <form action="{{ route('testimony.accept', $request) }}" method="POST">
+                                                    <form action="{{ route('admin.testimony.accept', $request) }}"
+                                                        method="POST">
                                                         @method('put')
                                                         @csrf
                                                         <button class="btn btn-success mb-3"
-                                                            href="{{ route('testimony.accept', $request) }}">
+                                                            href="{{ route('admin.testimony.accept', $request) }}">
                                                             Terima Testimoni
                                                         </button>
                                                     </form>
-                                                    <form action="{{ route('testimony.reject', $request) }}" method="POST">
+                                                    <form action="{{ route('admin.testimony.reject', $request) }}"
+                                                        method="POST">
                                                         @method('put')
                                                         @csrf
                                                         <button class="btn btn-danger mb-3"
-                                                            href="{{ route('testimony.reject', $request) }}">
+                                                            href="{{ route('admin.testimony.reject', $request) }}">
                                                             Tolak Testimoni
                                                         </button>
                                                     </form>

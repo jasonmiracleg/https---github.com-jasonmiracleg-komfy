@@ -15,16 +15,18 @@
             <div class="col-lg-8 col-md-12 col-12">
                 <div class="my-6">
                     <!--Facebook-->
-                    <a href="#" class="text-muted me-4">
-                        <img src="{{ asset('assets/image/instagram.png') }}" alt="" style="width:24px; height:24px">
+                    <a href="#" class="text-muted me-4 text-decoration-none">
+                        <img src="{{ asset('assets/image/instagram.png') }}" alt=""
+                            style="width:24px; height:24px">
                     </a>
                     <!--Twitter-->
-                    <a href="#" class="text-muted me-4">
-                        <img src="{{ asset('assets/image/whatsapp.png') }}" alt="" style="width:24px; height:24px">
+                    <a href="#" class="text-muted me-4 text-decoration-none">
+                        <img src="{{ asset('assets/image/whatsapp.png') }}" alt=""
+                            style="width:24px; height:24px">
                     </a>
                 </div>
             </div>
-            <div class="col-lg-8 col-md-12 col-12">
+            <div class="pt-2 col-lg-8 col-md-12 col-12">
                 <span>
                     ©
                     <span id="copyright">

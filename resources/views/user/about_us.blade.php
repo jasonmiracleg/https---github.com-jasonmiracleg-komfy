@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container pt-5">
         <section class="py-lg-16 py-6">
             <div class="container">
                 <div class="row d-flex align-items-center">

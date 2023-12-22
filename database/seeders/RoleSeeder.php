@@ -19,8 +19,5 @@ class RoleSeeder extends Seeder
         DB::table('roles')->insert([
             'role_name' => 'member',
         ]);
-        DB::table('roles')->insert([
-            'role_name' => 'customer',
-        ]);
     }
 }

@@ -13,18 +13,18 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
     <!-- Scripts -->
+    <script src="//unpkg.com/alpinejs" defer></script>
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #ff9500">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand text-white fw-bold" href="{{ url('/') }}">
+                    {{ config('app.name', 'Komfy') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -37,52 +37,73 @@
                     <ul class="navbar-nav me-auto">
                         @auth
                             @if (Auth::user()->isAdmin())
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/admin_order"> Order </a>
+                                <li class="nav-item text-white">
+                                    <a class="nav-link text-white" href="/admin_order"> Order </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link"
+                                    <a class="nav-link text-white"
                                         href="{{ route('admin.bookkeeping.index') }}">{{ __('Pembukuan') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/admin_product">{{ __('Produk') }}</a>
+                                    <a class="nav-link text-white" href="/admin_product">{{ __('Produk') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.testimony') }}">{{ __('Testimoni') }}</a>
+                                    <a class="nav-link text-white"
+                                        href="{{ route('admin.testimony') }}">{{ __('Testimoni') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link"
+                                    <a class="nav-link text-white"
                                         href="{{ route('admin.partnership') }}">{{ __('Partnership') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/admin_category"> Kategori </a>
+                                    <a class="nav-link text-white" href="/admin_category"> Kategori </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/admin_variant"> Variant </a>
+                                    <a class="nav-link text-white" href="/admin_variant"> Variant </a>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="{{ route('home') }}">{{ __('Home') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="/about_us">{{ __('Tentang Kami') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <form method="POST" action="{{ route('member.check.cart') }}">
+                                        @csrf
+                                        <button class="nav-link text-white"> Keranjang </button>
+                                        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                                    </form>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white"
+                                        href="{{ route('member.testimony.index') }}">{{ __('Testimoni') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="{{ route('produk') }}">{{ __('Produk') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white"
+                                        href="{{ route('partnership.index') }}">{{ __('Partnership') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                                <a class="nav-link text-white" href="{{ route('home') }}">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/about_us">{{ __('Tentang Kami') }}</a>
+                                <a class="nav-link text-white" href="/about_us">{{ __('Tentang Kami') }}</a>
                             </li>
                             <li class="nav-item">
-                                <form method="POST" action="/check_cart">
-                                    @csrf
-                                    <button class="nav-link"> Keranjang </button>
-                                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                                </form>
+                                <a class="nav-link text-white"
+                                    href="{{ route('testimony.index') }}">{{ __('Testimoni') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('testimony.index') }}">{{ __('Testimoni') }}</a>
+                                <a class="nav-link text-white" href="{{ route('produk') }}">{{ __('Produk') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('produk') }}">{{ __('Produk') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('partnership.index') }}">{{ __('Partnership') }}</a>
+                                <a class="nav-link text-white"
+                                    href="{{ route('partnership.index') }}">{{ __('Partnership') }}</a>
                             </li>
                         @endauth
                     </ul>
@@ -93,19 +114,20 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
+                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -116,7 +138,8 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
                                         @csrf
                                     </form>
                                 </div>
@@ -130,6 +153,7 @@
         <main>
             @yield('content')
         </main>
+
     </div>
 </body>
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-5">
+    <div class="container pt-5">
         <a href="/create_new_var">
             <button type="button" class="btn btn-success"> Buat Baru </button>
         </a>

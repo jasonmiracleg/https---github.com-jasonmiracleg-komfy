@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <form action="/cart" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('member.cart') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="main-content">
 
@@ -36,7 +36,8 @@
 
                             <div class="col-md-6">
                                 <label class="form-label" for="textInput">Jumlah : </label>
-                                <input type="number" name="quantity" min="1" class="form-control mb-3" required placeholder="Input Jumlah">
+                                <input type="number" name="quantity" min="1" class="form-control mb-3" required
+                                    placeholder="Input Jumlah">
                             </div>
 
                             <input type="hidden" name="product_id" value="{{ $product->id }}">

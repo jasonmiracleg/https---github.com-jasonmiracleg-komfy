@@ -6,13 +6,14 @@ use App\Models\Account;
 use App\Models\Bookkeeping;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Livewire\Livewire;
 
 class BookkeepingController extends Controller
 {
     public function index()
     {
         $accounts = Account::all();
-        $bookkeepings = Bookkeeping::paginate(5);
+        $bookkeepings = Bookkeeping::paginate(10);
 
         $totals = Bookkeeping::groupBy('account_id')
             ->selectRaw('account_id, sum(amount) as total_amount')

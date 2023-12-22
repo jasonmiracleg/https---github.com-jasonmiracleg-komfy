@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-5">
+    <div class="container pt-5">
         <form method="POST" action="{{ route('product.add') }}">
             @csrf
             <!-- Input -->
             <div class="mb-3">
                 <label class="form-label" for="textInput">Nama Produk : </label>
-                <input required type="text" id="textInput" class="form-control" placeholder="Nama Produk Baru" name="product_name">
+                <input required type="text" id="textInput" class="form-control" placeholder="Nama Produk Baru"
+                    name="product_name">
             </div>
 
             <!-- Input -->

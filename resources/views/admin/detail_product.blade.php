@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-5">
+    <div class="container pt-5">
         <form method="POST" action="/edit_product">
             @csrf
             <input type="hidden" value="{{ $recent_product_id }}" name="recent_product_id">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div style="background-color: #ff9500">
+    <div style="background-color: #ffb348">
         <div class="container py-5 text-white">
             <h1 class="display-2 fw-semibold">Partnership Komfy</h1>
             <p class="fs-3">Partner kami memiliki dampak besar pada perkembangan bisnis Komfy. Menjaga kepercayaan dan
@@ -14,7 +14,7 @@
             @if (Auth::user()->isAdmin())
                 <div>
                     <form action="{{ route('partnership.create') }}" method="GET">
-                        <button class="btn btn-warning mb-3 text-white fw-bold" href="{{ route('testimony.create') }}">
+                        <button class="btn btn-success mb-3 text-white fw-bold" href="{{ route('testimony.create') }}">
                             Tambah Partnership
                         </button>
                     </form>

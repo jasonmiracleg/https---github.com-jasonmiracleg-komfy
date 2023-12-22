@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-5">
+    <div class="container pt-5">
 
         <form method="POST" action="/create_variant" enctype="multipart/form-data">
             @csrf
@@ -19,13 +19,14 @@
 
             <!-- Input -->
             <div class="mb-3">
-                <label class="form-label" for="textInput">Nama Varian :  </label>
-                <input required type="text" id="textInput" class="form-control" placeholder="Nama Varian Baru" name="variant_name">
+                <label class="form-label" for="textInput">Nama Varian : </label>
+                <input required type="text" id="textInput" class="form-control" placeholder="Nama Varian Baru"
+                    name="variant_name">
             </div>
 
             <!-- Input -->
             <div class="mb-3">
-                <label class="form-label" for="textInput">Harga :  </label>
+                <label class="form-label" for="textInput">Harga : </label>
                 <input required type="number" id="textInput" class="form-control" placeholder="Harga Baru" name="price">
             </div>
 
@@ -44,7 +45,7 @@
 
             <!-- Input -->
             <div class="mb-3">
-                <label class="form-label">Gambar :  </label>
+                <label class="form-label">Gambar : </label>
                 <input required type="file" id="input-file-now-custom-3" class="form-control" name="images[]" multiple
                     accept="image/*">
             </div>

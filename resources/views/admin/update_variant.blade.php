@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-5">
+    <div class="container pt-5">
         <form method="POST" action="/update_admin_variant" enctype="multipart/form-data">
             @csrf
             <input type="hidden" value="{{ $variant->id }}" name="variant_id">
 
-             <!-- Select Option -->
-             <div class="mb-3">
+            <!-- Select Option -->
+            <div class="mb-3">
                 <label class="form-label" for="selectOne">Pilih Produk : </label>
                 <select required class="form-select" name="product_id" aria-label="Default select example">
                     @foreach ($products as $product)
@@ -23,14 +23,16 @@
 
             <!-- Input -->
             <div class="mb-3">
-                <label class="form-label" for="textInput">Masukkan nama varian :  </label>
-                <input required type="text" id="textInput" class="form-control" placeholder="Varian Lama : {{ $variant->variant_name }}" name="variant_name">
+                <label class="form-label" for="textInput">Masukkan nama varian : </label>
+                <input required type="text" id="textInput" class="form-control"
+                    placeholder="Varian Lama : {{ $variant->variant_name }}" name="variant_name">
             </div>
 
             <!-- Input -->
             <div class="mb-3">
                 <label class="form-label" for="textInput"> Harga Baru : </label>
-                <input required type="number" id="textInput" class="form-control" placeholder="Harga Lama : {{ $variant->price }}" name="price">
+                <input required type="number" id="textInput" class="form-control"
+                    placeholder="Harga Lama : {{ $variant->price }}" name="price">
             </div>
 
             <!-- Select Option -->

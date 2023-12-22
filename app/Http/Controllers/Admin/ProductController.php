@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Bill;
-use App\Models\Category;
-use App\Models\Order;
-use App\Models\Product;
-use App\Models\ProductPicture;
 use App\Models\User;
+use App\Models\Order;
+use Livewire\Livewire;
+use App\Models\Product;
 use App\Models\Variant;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\ProductPicture;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -45,18 +46,14 @@ class ProductController extends Controller
             'product_name' => $request->product_name,
             'description' => $request->description,
         ]);
-
         return redirect()->route('product.admin');
-
     }
 
     public function delete($product_id)
     {
         $product = Product::find($product_id);
         $product->delete();
-
         return redirect()->route('product.admin');
-
     }
 
     public function create_product()
@@ -85,7 +82,6 @@ class ProductController extends Controller
             'bills' => $bills,
             'orders' => $orders
         ]);
-
     }
 
     public function add(Request $request)
@@ -98,4 +94,3 @@ class ProductController extends Controller
         return redirect()->route('product.admin');
     }
 }
-

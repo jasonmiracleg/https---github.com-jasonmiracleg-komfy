@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Event;
 
 class LoginController extends Controller
 {
@@ -55,22 +56,16 @@ class LoginController extends Controller
             'role_id' => 2,
             'is_active' => '1',
         ];
-        $customer = [
-            'email' => $request->email,
-            'password' => $request->password,
-            'role_id' => 3,
-            'is_active' => '1',
-        ];
+
         if (Auth::attempt($admin)) {
             $this->isLogin(Auth::id());
-            return redirect()->route('home');
+            return redirect()->route('order.admin');
         } else if (Auth::attempt($member)) {
             $this->isLogin(Auth::id());
             return redirect()->route('home');
-        } else if (Auth::attempt($customer)) {
-            return redirect()->route('home');
         }
-        return redirect()->route('login');
+
+        return redirect()->route('login')->with('error', 'Invalid email or password');
     }
 
     public function isLogin(int $id)

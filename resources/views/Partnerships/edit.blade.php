@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container pt-5">
         <div class="card">
             <div class="card-header">
                 <h1 class="mt-3 fw-bolder text-center mb-3">Edit Partnership</h1>

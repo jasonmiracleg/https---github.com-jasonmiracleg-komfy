@@ -5,7 +5,8 @@
         <div class="row d-flex justify-content-between">
             @foreach ($accounts as $account)
                 <div class="col-lg-3 col-sm-6">
-                    <a class="card border-0 text-decoration-none rounded-7 shadow mb-4" style="background-color: #fff3cd">
+                    <a class="card border-0 text-decoration-none text-white rounded-7 shadow mb-4"
+                        style="background-color: #ffb348">
                         <div class="card-body">
                             <h2 class="fw-bolder">{{ $account->account_type }}</h2>
                             <h3 class="fw-semibold">{{ 'Rp ' . $totalsByType[$account->account_type] }}</h3>
@@ -19,7 +20,7 @@
                 @if (Auth::user()->isAdmin())
                     <div>
                         <form action="{{ route('admin.bookkeeping.create') }}" method="GET">
-                            <button class="btn btn-warning mb-3 text-white fw-bold"
+                            <button class="btn btn-success mb-3 text-white fw-bold"
                                 href="{{ route('admin.bookkeeping.create') }}">
                                 Tambah Pembukuan
                             </button>

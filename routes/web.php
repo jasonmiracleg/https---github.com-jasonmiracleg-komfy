@@ -10,6 +10,8 @@ use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\Admin\ProductPictureController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\VariantController;
+use App\Http\Controllers\Member\ProductController as MemberProductController;
+use App\Http\Controllers\Member\TestimonyController as MemberTestimonyController;
 use App\Livewire\Show;
 use App\Http\Controllers\TestimonyController;
 use Illuminate\Support\Facades\Auth;
@@ -69,12 +71,6 @@ Route::get('/delete_single_image/{image_id}', [ProductPictureController::class, 
 
 Route::post('/create_variant', [VariantController::class, 'create']);
 
-Route::post('/cart', [ProductController::class, 'cart']);
-
-Route::post('/checkout', [ProductController::class, 'checkout']);
-
-Route::post('/check_cart', [ProductController::class, 'show_cart']);
-
 Route::get('/delete_order/{order_id}', [ProductController::class, 'delete_order']);
 
 Route::get('/verify_is_paid/{bill_id}', [BillController::class, 'verify_paid']);
@@ -86,8 +82,6 @@ Auth::routes();
 Route::resource('testimony', TestimonyController::class);
 Route::resource('partnership', PartnershipController::class);
 
-Route::put('/testimony/{testimony}/accept', [TestimonyController::class, 'accept'])->name('testimony.accept');
-Route::put('/testimony/{testimony}/reject', [TestimonyController::class, 'reject'])->name('testimony.reject');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group([
@@ -96,6 +90,19 @@ Route::group([
     'as' => 'admin.',
 ], function () {
     Route::get('/testimony', [AdminTestimonyController::class, 'index'])->name('testimony');
+    Route::put('/testimony/{testimony}/accept', [AdminTestimonyController::class, 'accept'])->name('testimony.accept');
+    Route::put('/testimony/{testimony}/reject', [AdminTestimonyController::class, 'reject'])->name('testimony.reject');
     Route::get('/partnership', [AdminPartnershipController::class, 'index'])->name('partnership');
     Route::resource('bookkeeping', BookkeepingController::class);
+});
+
+Route::group([
+    'middleware' => 'member',
+    'prefix' => 'member',
+    'as' => 'member.',
+], function () {
+    Route::Resource('testimony', MemberTestimonyController::class);
+    Route::post('/cart', [MemberProductController::class, 'cart'])->name('cart');
+    Route::post('/checkout', [MemberProductController::class, 'checkout'])->name('checkout');
+    Route::post('/check_cart', [MemberProductController::class, 'show_cart'])->name('check.cart');
 });
