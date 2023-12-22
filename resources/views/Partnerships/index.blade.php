@@ -26,15 +26,22 @@
                 <div class="col-lg-3 col-md-6 col-12">
                     <!-- Card -->
                     <div class="card card-hover">
-                        <img src="{{ asset('storage/' . $partnership->partnership_picture) }}"
-                            class="img-square img-fluid rounded-top w-sm-auto w-100">
+                        @if (Storage::disk('public')->exists($partnership->partnership_picture))
+                            <img src="{{ asset('storage/' . $partnership->partnership_picture) }}"
+                                class="img-square img-fluid rounded-top w-sm-auto w-100">
+                        @else
+                            <img src="{{ asset('image/body_sculpture.jpg') }}"
+                                class="img-square img-fluid rounded-top w-sm-auto w-100">
+                        @endif
                         <!-- Card Body -->
                         <div class="card-body border-top">
                             <h3 class="fw-bold mb-2 text-truncate-line-2 ">{{ $partnership->partnership_name }}
                             </h3>
                             <div>
                                 <p>{{ $partnership->description }}</p>
-                                <p><span class="fw-bolder">Contact : </span>{{ $partnership->phone_number }}</p>
+                                @if ($partnership->phone_number)
+                                    <p><span class="fw-bolder">Contact : </span>{{ $partnership->phone_number }}</p>
+                                @endif
                             </div>
                         </div>
                         <!-- Card Footer -->

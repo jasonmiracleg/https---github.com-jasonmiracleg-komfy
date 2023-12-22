@@ -33,11 +33,21 @@ class DatabaseSeeder extends Seeder
             'is_active' => '1',
         ]);
         DB::table('users')->insert([
-            'name' => 'Yobel',
-            'email' => "yobel@gmail.com",
+            'name' => 'Arya',
+            'email' => "arya@gmail.com",
             'password' => bcrypt('12345678'),
             'profile_picture' => "image/User_icon.png",
-            'telephone' => '0123142514',
+            'telephone' => '081252027288',
+            'role_id' => 2,
+            'is_login' => '0',
+            'is_active' => '1',
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Alexander Asher W',
+            'email' => "alexander@gmail.com",
+            'password' => bcrypt('12345678'),
+            'profile_picture' => "image/User_icon.png",
+            'telephone' => '082139508018',
             'role_id' => 2,
             'is_login' => '0',
             'is_active' => '1',
@@ -47,6 +57,6 @@ class DatabaseSeeder extends Seeder
         $this->call(VariantSeeder::class);
         $this->call(ProductPictureSeeder::class);
         $this->call(BillSeeder::class);
-        $this->call([OrderSeeder::class, AccountSeeder::class]);
+        $this->call([OrderSeeder::class, AccountSeeder::class, TestimonySeeder::class, PartnershipSeeder::class]);
     }
 }

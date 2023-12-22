@@ -30,7 +30,6 @@ class PartnershipController extends Controller
             'partnership_name' => 'required',
             'description' => 'required',
             'url' => 'url',
-            'phone_number' => 'required| max:13',
             'partnership_picture' => ['image', new SquareImage]
         ]);
         $validatedData['partnership_picture'] = $request->file('partnership_picture')->store('images', ['disk' => 'public']);
@@ -39,7 +38,7 @@ class PartnershipController extends Controller
             'partnership_name' => $validatedData['partnership_name'],
             'description' => $validatedData['description'],
             'url' => optional($validatedData)['url'],
-            'phone_number' => $validatedData['phone_number'],
+            'phone_number' => optional($validatedData)['phone_number'],
             'partnership_picture' => $validatedData['partnership_picture']
         ]);
         return redirect()->route('partnership.index');

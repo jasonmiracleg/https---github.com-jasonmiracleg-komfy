@@ -61,10 +61,12 @@
                                     @foreach ($bills as $bill)
                                         @if ($bill->id == $order->bill_id)
                                             @if ($bill->is_cash == '1' || $bill->is_paid == '1')
-                                                @if ($bill->is_cash == '1')
-                                                    <button type="button" class="btn btn-success">
-                                                        Akan dibayar cash
-                                                    </button>
+                                                @if ($bill->is_cash == '1' && $bill->is_paid == '0')
+                                                    <a href="/verify_is_paid/{{ $order->bill_id }}">
+                                                        <button type="button" class="btn btn-success">
+                                                            Akan dibayar cash
+                                                        </button>
+                                                    </a>
                                                 @else
                                                     <button type="button" class="btn btn-warning">
                                                         Sudah dibayar

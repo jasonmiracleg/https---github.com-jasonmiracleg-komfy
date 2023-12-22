@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('partnership_name');
             $table->text('description');
             $table->string('url')->nullable();
-            $table->string('phone_number');
+            $table->string('phone_number')->nullable();
             $table->string('partnership_picture');
             $table->timestamps();
         });

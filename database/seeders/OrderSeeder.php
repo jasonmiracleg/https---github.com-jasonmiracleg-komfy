@@ -13,11 +13,5 @@ class OrderSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('orders')->insert([
-            'user_id' => 2,
-            'variant_id' => 1,
-            'quantity' => 5,
-            'order_price' => 5000
-        ]);
     }
 }
