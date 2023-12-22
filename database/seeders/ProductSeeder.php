@@ -14,8 +14,8 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         DB::table('products')->insert([
-            'product_name' => 'KOMB',
-            'description' => 'rasanya enak sekali',
+            'product_name' => 'Kombucha',
+            'description' => 'Kombucha adalah minuman fermentasi untuk kesehatan yang kaya akan kandungan antioksidan. Kandungan antioksidan ini dapat meningkatkan sistem kekebalan tubuh, memerangi bakteri jahat penyebab infeksi, serta mengurangi peradangan',
         ]);
     }
 }

@@ -44,7 +44,6 @@
                             <input type="hidden" name="variant_id" value="{{ $variant->id }}">
                             <input type="hidden" name="price" value="{{ $variant->price }}">
                             <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id() }}">
-
                             <button class="btn btn-success border border-secondary icon-hover px-3" type="submit">
                                 Tambah ke Keranjang
                             </button>
