@@ -32,14 +32,15 @@ class PartnershipController extends Controller
             'url' => 'url',
             'partnership_picture' => ['image', new SquareImage]
         ]);
-        $validatedData['partnership_picture'] = $request->file('partnership_picture')->store('images', ['disk' => 'public']);
-
+        $partnershipPicture = $request->file('partnership_picture');
+        $imageName = time() . '_' . $partnershipPicture->getClientOriginalName();
+        $partnershipPicture->move(public_path("images"), $imageName);
         Partnership::create([
             'partnership_name' => $validatedData['partnership_name'],
             'description' => $validatedData['description'],
             'url' => optional($validatedData)['url'],
             'phone_number' => optional($validatedData)['phone_number'],
-            'partnership_picture' => $validatedData['partnership_picture']
+            'partnership_picture' => $imageName
         ]);
         return redirect()->route('partnership.index');
     }
@@ -58,18 +59,19 @@ class PartnershipController extends Controller
             'url' => 'url',
             'phone_number' => 'required| max:13'
         ]);
-        if ($request->partnership_picture) {
-            $validatedData = $request->validate([
-                'partnership_picture' => ['image', new SquareImage]
-            ]);
+        if ($request->hasFile('partnership_picture')) {
+            // Delete the existing partnership picture if it exists
             if ($partnership->partnership_picture) {
                 Storage::disk('public')->delete($partnership->partnership_picture);
             }
-            $validatedData['partnership_picture'] = $request->file('partnership_picture')->store('images', ['disk' => 'public']);
 
-            $partnership->update([
-                'partnership_picture' => $validatedData['partnership_picture']
-            ]);
+            // Move the new partnership picture to the public/images directory
+            $partnershipPicture = $request->file('partnership_picture');
+            $imageName = time() . '_' . $partnershipPicture->getClientOriginalName();
+            $partnershipPicture->move(public_path("images"), $imageName);
+
+            $validatedData['partnership_picture'] = $imageName;
+            $partnership->update(['partnership_picture' => $validatedData['partnership_picture']]);
         }
 
         $partnership->update([

@@ -13,7 +13,7 @@
         @auth
             @if (Auth::user()->isAdmin())
                 <div>
-                    <form action="{{ route('partnership.create') }}" method="GET">
+                    <form action="{{ route('admin.partnership.create') }}" method="GET">
                         <button class="btn btn-success mb-3 text-white fw-bold" href="{{ route('testimony.create') }}">
                             Tambah Partnership
                         </button>
@@ -26,11 +26,11 @@
                 <div class="col-lg-3 col-md-6 col-12">
                     <!-- Card -->
                     <div class="card card-hover">
-                        @if (Storage::disk('public')->exists($partnership->partnership_picture))
-                            <img src="{{ asset('storage/' . $partnership->partnership_picture) }}"
+                        @if (Storage::disk('public')->exists('assets/image/' . $partnership->partnership_picture))
+                            <img src="{{ asset('assets/image/' . $partnership->partnership_picture) }}"
                                 class="img-square img-fluid rounded-top w-sm-auto w-100">
                         @else
-                            <img src="{{ asset('image/body_sculpture.jpg') }}"
+                            <img src="{{ asset('assets/image/body_sculpture.jpg') }}"
                                 class="img-square img-fluid rounded-top w-sm-auto w-100">
                         @endif
                         <!-- Card Body -->

@@ -8,7 +8,7 @@
                 <p class="fs-3 text-center text-md-start">Apa pendapat mereka tentang produk Komfy?</p>
             </div>
             <div class="col-md-4 order-md-2 order-1 text-center d-md-block d-none">
-                <img src="{{ asset('image/Testimony.JPG') }}" class="rounded img-fluid">
+                <img src="{{ asset('assets/image/Testimony.JPG') }}" class="rounded img-fluid">
             </div>
         </div>
         <div class="p-lg-3 p-4">
@@ -30,15 +30,16 @@
                                             <div class="d-lg-flex">
                                                 <div
                                                     class="position-relative d-flex justify-content-center align-items-center align-items-lg-start">
-                                                    @if (Storage::disk('public')->exists($testimony->testify->profile_picture))
-                                                        <img src="{{ asset('storage/' . $testimony->testify->profile_picture) }}"
+                                                    @if (Storage::disk('public')->exists('assets/image/' . $testimony->testify->profile_picture))
+                                                        <img src="{{ asset('assets/image/' . $testimony->testify->profile_picture) }}"
+                                                            alt="err"
                                                             class="rounded-circle
-                                         mb-3 mb-lg-0 shadow"
+                                                            mb-3 mb-lg-0 shadow"
                                                             width="100" height="100">
                                                     @else
-                                                        <img src="{{ asset('image/User_icon.png') }}"
+                                                        <img src="{{ asset('assets/image/User_icon.png') }}" alt="err"
                                                             class="rounded-circle
-                                         mb-3 mb-lg-0 shadow"
+                                                        mb-3 mb-lg-0 shadow"
                                                             width="100" height="100">
                                                     @endif
                                                 </div>
@@ -83,10 +84,18 @@
                                             <div class="d-lg-flex">
                                                 <div
                                                     class="position-relative d-flex justify-content-center align-items-center align-items-lg-start">
-                                                    <img src="{{ asset('image/Testimony.JPG') }}" alt=""
-                                                        class="rounded-circle
-                                         mb-3 mb-lg-0 shadow"
-                                                        width="100" height="100">
+                                                    @if (Storage::disk('public')->exists('assets/image/' . $testimony->testify->profile_picture))
+                                                        <img src="{{ asset('assets/image/' . $testimony->testify->profile_picture) }}"
+                                                            alt="err"
+                                                            class="rounded-circle
+                                                            mb-3 mb-lg-0 shadow"
+                                                            width="100" height="100">
+                                                    @else
+                                                        <img src="{{ asset('assets/image/User_icon.png') }}" alt="err"
+                                                            class="rounded-circle
+                                                        mb-3 mb-lg-0 shadow"
+                                                            width="100" height="100">
+                                                    @endif
                                                 </div>
                                                 <div class="ms-lg-4 text-lg-start text-center text-white">
                                                     <h4 class="mb-0 fw-bold">{{ $request->testify->name }}</h4>
@@ -137,10 +146,18 @@
                             <div class="d-lg-flex">
                                 <div
                                     class="position-relative d-flex justify-content-center align-items-center align-items-lg-start">
-                                    <img src="{{ asset('image/Testimony.JPG') }}" alt=""
-                                        class="rounded-circle
-                             mb-3 mb-lg-0 shadow"
-                                        width="100" height="100">
+                                    @if (Storage::disk('public')->exists('assets/image/' . $testimony->testify->profile_picture))
+                                        <img src="{{ asset('assets/image/' . $testimony->testify->profile_picture) }}"
+                                            alt="err"
+                                            class="rounded-circle
+                                        mb-3 mb-lg-0 shadow"
+                                            width="100" height="100">
+                                    @else
+                                        <img src="{{ asset('assets/image/User_icon.png') }}" alt="err"
+                                            class="rounded-circle
+                                    mb-3 mb-lg-0 shadow"
+                                            width="100" height="100">
+                                    @endif
                                 </div>
                                 <div class="ms-lg-4 text-lg-start text-center text-white">
                                     <h4 class="mb-0 fw-bold">{{ $testimony->testify->name }}</h4>
