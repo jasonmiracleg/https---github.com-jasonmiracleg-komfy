@@ -41,11 +41,14 @@ class ProductController extends Controller
 
         $product = Product::find($product_id);
 
+        $quantity = 1;
+
         return view('user.show', [
             'product_picture' => $product_picture,
             'variant' => $variant,
             'product' => $product,
-            'category' => $category
+            'category' => $category,
+            'quantity' => $quantity
         ]);
     }
 
