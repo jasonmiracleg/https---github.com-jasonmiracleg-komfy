@@ -16,7 +16,7 @@
                 </div>
             @endif
             <div class="card-body">
-                <form action="{{ route('partnership.update', $partnershipEdit) }}" method="POST"
+                <form action="{{ route('admin.partnership.update', $partnershipEdit) }}" method="POST"
                     enctype="multipart/form-data">
                     @method('put')
                     @csrf
@@ -51,7 +51,7 @@
                         @enderror
                         @if ($partnershipEdit->partnership_picture)
                             <br>
-                            <img src="{{ asset('storage/' . $partnershipEdit->partnership_picture) }}"
+                            <img src="{{ asset('assets/image/' . $partnershipEdit->partnership_picture) }}"
                                 alt="{{ $partnershipEdit->partnership_name }}" class="img-preview img-fluid mb-3 col-sm-5">
                         @else
                             <img class="img-preview img-fluid mb-3 col-sm-5">

@@ -16,7 +16,7 @@
                 </div>
             @endif
             <div class="card-body">
-                <form action="{{ route('partnership.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.partnership.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="title" class="form-label">Partnership Name</label>

@@ -16,7 +16,7 @@
                 @if (Auth::user()->isMember())
                     <div class="border-top border-bottom">
                         <h1 class="mt-3 fw-bolder text-center mb-3">Testimoni Anda</h1>
-                        <form action="{{ route('testimony.create') }}" method="GET">
+                        <form action="{{ route('member.testimony.create') }}" method="GET">
                             <button class="btn btn-success mb-3" href="{{ route('testimony.create') }}">
                                 Tambah Testimoni
                             </button>
@@ -30,7 +30,7 @@
                                             <div class="d-lg-flex">
                                                 <div
                                                     class="position-relative d-flex justify-content-center align-items-center align-items-lg-start">
-                                                    @if (Storage::disk('public')->exists('assets/image/' . $testimony->testify->profile_picture))
+                                                    @if (File::exists('assets/image/' . $testimony->testify->profile_picture))
                                                         <img src="{{ asset('assets/image/' . $testimony->testify->profile_picture) }}"
                                                             alt="err"
                                                             class="rounded-circle
@@ -49,17 +49,19 @@
                                                     </p>
                                                     <p>{{ $testimony->description }}
                                                     </p>
-                                                    <form action="{{ route('testimony.edit', $testimony) }}" method="GET">
+                                                    <form action="{{ route('member.testimony.edit', $testimony) }}"
+                                                        method="GET">
                                                         <button class="btn btn-primary mb-3"
-                                                            href="{{ route('testimony.edit', $testimony) }}">
+                                                            href="{{ route('member.testimony.edit', $testimony) }}">
                                                             Edit Testimoni
                                                         </button>
                                                     </form>
-                                                    <form action="{{ route('testimony.destroy', $testimony) }}" method="POST">
+                                                    <form action="{{ route('member.testimony.destroy', $testimony) }}"
+                                                        method="POST">
                                                         @method('delete')
                                                         @csrf
                                                         <button class="btn btn-danger mb-3"
-                                                            href="{{ route('testimony.destroy', $testimony) }}">
+                                                            href="{{ route('member.testimony.destroy', $testimony) }}">
                                                             Hapus Testimoni
                                                         </button>
                                                     </form>
@@ -84,8 +86,8 @@
                                             <div class="d-lg-flex">
                                                 <div
                                                     class="position-relative d-flex justify-content-center align-items-center align-items-lg-start">
-                                                    @if (Storage::disk('public')->exists('assets/image/' . $testimony->testify->profile_picture))
-                                                        <img src="{{ asset('assets/image/' . $testimony->testify->profile_picture) }}"
+                                                    @if (File::exists('assets/image/' . $request->testify->profile_picture))
+                                                        <img src="{{ asset('assets/image/' . $request->testify->profile_picture) }}"
                                                             alt="err"
                                                             class="rounded-circle
                                                             mb-3 mb-lg-0 shadow"
@@ -146,7 +148,7 @@
                             <div class="d-lg-flex">
                                 <div
                                     class="position-relative d-flex justify-content-center align-items-center align-items-lg-start">
-                                    @if (Storage::disk('public')->exists('assets/image/' . $testimony->testify->profile_picture))
+                                    @if (File::exists('assets/image/' . $testimony->testify->profile_picture))
                                         <img src="{{ asset('assets/image/' . $testimony->testify->profile_picture) }}"
                                             alt="err"
                                             class="rounded-circle

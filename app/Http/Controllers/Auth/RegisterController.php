@@ -86,7 +86,7 @@ class RegisterController extends Controller
 
         $profilePicture = $request->file('profile_picture');
         $imageName = time() . '_' . $profilePicture->getClientOriginalName();
-        $profilePicture->move(public_path("images"), $imageName);
+        $profilePicture->move(\public_path("/assets/image"), $imageName);
 
         $user = $this->create($request->all(), $imageName);
 

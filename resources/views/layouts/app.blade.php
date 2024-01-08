@@ -55,7 +55,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white"
-                                        href="{{ route('admin.partnership') }}">{{ __('Partnership') }}</a>
+                                        href="{{ route('admin.partnership.index') }}">{{ __('Partnership') }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="/admin_category"> Kategori </a>

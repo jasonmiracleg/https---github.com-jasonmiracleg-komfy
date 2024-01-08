@@ -6,6 +6,7 @@ use App\Rules\SquareImage;
 use App\Models\Partnership;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class PartnershipController extends Controller
@@ -34,7 +35,7 @@ class PartnershipController extends Controller
         ]);
         $partnershipPicture = $request->file('partnership_picture');
         $imageName = time() . '_' . $partnershipPicture->getClientOriginalName();
-        $partnershipPicture->move(public_path("images"), $imageName);
+        $partnershipPicture->move(\public_path("/assets/image"), $imageName);
         Partnership::create([
             'partnership_name' => $validatedData['partnership_name'],
             'description' => $validatedData['description'],
@@ -62,13 +63,16 @@ class PartnershipController extends Controller
         if ($request->hasFile('partnership_picture')) {
             // Delete the existing partnership picture if it exists
             if ($partnership->partnership_picture) {
+                if (File::exists("assets/image/" . $partnership->partnership_picture)) {
+                    File::delete("assets/image/" . $partnership->partnership_picture);
+                }
                 Storage::disk('public')->delete($partnership->partnership_picture);
             }
 
             // Move the new partnership picture to the public/images directory
             $partnershipPicture = $request->file('partnership_picture');
             $imageName = time() . '_' . $partnershipPicture->getClientOriginalName();
-            $partnershipPicture->move(public_path("images"), $imageName);
+            $partnershipPicture->move(public_path("/assets/image"), $imageName);
 
             $validatedData['partnership_picture'] = $imageName;
             $partnership->update(['partnership_picture' => $validatedData['partnership_picture']]);
@@ -87,8 +91,8 @@ class PartnershipController extends Controller
     public function destroy(Partnership $partnership)
     {
         if ($partnership->partnership_picture) {
-            if (Storage::disk('public')->exists($partnership->partnership_picture)) {
-                Storage::disk('public')->delete($partnership->partnership_picture);
+            if (File::exists("assets/image/" . $partnership->partnership_picture)) {
+                File::delete("assets/image/" . $partnership->partnership_picture);
             }
         }
         $partnership->delete();

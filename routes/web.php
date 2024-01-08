@@ -93,7 +93,7 @@ Route::group([
     Route::put('/testimony/{testimony}/accept', [AdminTestimonyController::class, 'accept'])->name('testimony.accept');
     Route::put('/testimony/{testimony}/reject', [AdminTestimonyController::class, 'reject'])->name('testimony.reject');
     Route::get('/partnership/create', [AdminPartnershipController::class, 'create'])->name('partnership.create');
-    Route::get('/partnership', [AdminPartnershipController::class, 'index'])->name('partnership');
+    Route::resource('partnership', AdminPartnershipController::class);
     Route::resource('bookkeeping', BookkeepingController::class);
 });
 

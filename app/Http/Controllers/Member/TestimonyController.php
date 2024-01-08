@@ -17,7 +17,7 @@ class TestimonyController extends Controller
             if (Auth::user()->role_id == 1) { // Showing testimony requests
                 $testimonyRequest = Testimony::where('is_accepted', '0')->get();
             } else if (Auth::user()->role_id == 2) { // Showing their own testimonies
-                $testimony = Testimony::where('user_id', 2)->where('is_accepted', '1')->get();
+                $testimony = Testimony::where('user_id', Auth::user()->id)->where('is_accepted', '1')->get();
             }
         }
         return view(
@@ -44,7 +44,7 @@ class TestimonyController extends Controller
             'description' => $validatedData['description'],
             'user_id' => $request['user_id'],
         ]);
-        return redirect()->route('testimony.index');
+        return redirect()->route('member.testimony.index');
     }
 
     public function edit(Testimony $testimony)
@@ -58,11 +58,11 @@ class TestimonyController extends Controller
         $testimony->update([
             'description' => $request->description,
         ]);
-        return redirect()->route('testimony.index');
+        return redirect()->route('member.testimony.index');
     }
     public function destroy(Testimony $testimony)
     {
         $testimony->delete();
-        return redirect()->route('testimony.index');
+        return redirect()->route('member.testimony.index');
     }
 }

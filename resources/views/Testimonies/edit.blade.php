@@ -16,7 +16,7 @@
                 </div>
             @endif
             <div class="card-body">
-                <form action="{{ route('testimony.update', $testimonyEdit) }}" method="POST">
+                <form action="{{ route('member.testimony.update', $testimonyEdit) }}" method="POST">
                     @method('put')
                     @csrf
                     <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id() }}">

@@ -26,7 +26,7 @@
                 <div class="col-lg-3 col-md-6 col-12">
                     <!-- Card -->
                     <div class="card card-hover">
-                        @if (Storage::disk('public')->exists('assets/image/' . $partnership->partnership_picture))
+                        @if (File::exists('assets/image/' . $partnership->partnership_picture))
                             <img src="{{ asset('assets/image/' . $partnership->partnership_picture) }}"
                                 class="img-square img-fluid rounded-top w-sm-auto w-100">
                         @else
@@ -55,17 +55,18 @@
                             @auth
                                 @if (Auth::user()->isAdmin())
                                     <div class="text-center flex-grow-1">
-                                        <form action="{{ route('partnership.edit', $partnership) }}" method="GET">
+                                        <form action="{{ route('admin.partnership.edit', $partnership) }}" method="GET">
                                             <button class="btn btn-primary fw-bold w-100"
-                                                href="{{ route('partnership.edit', $partnership) }}">Edit Partnership</button>
+                                                href="{{ route('admin.partnership.edit', $partnership) }}">Edit
+                                                Partnership</button>
                                         </form>
                                     </div>
                                     <div class="text-center flex-grow-1">
-                                        <form action="{{ route('partnership.destroy', $partnership) }}" method="POST">
+                                        <form action="{{ route('admin.partnership.destroy', $partnership) }}" method="POST">
                                             @method('delete')
                                             @csrf
-                                            <button class="btn btn-danger fw-bold w-100""
-                                                href="{{ route('partnership.destroy', $partnership) }}">
+                                            <button class="btn btn-danger fw-bold w-100"
+                                                href="{{ route('admin.partnership.destroy', $partnership) }}">
                                                 Hapus Partnership
                                             </button>
                                         </form>
